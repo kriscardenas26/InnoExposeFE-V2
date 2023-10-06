@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">SubCategoria</h3>
+        <h3 class="page__heading">Listado de SubCategorias</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -47,14 +47,14 @@
                                 
                                     <td>
                                         <form action="{{ route('subcategorias.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('subcategorias.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('subcategorias.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
                                             @can('editar-subcategoria')
-                                            <a class="btn btn-sm btn-success" href="{{ route('subcategorias.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('subcategorias.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-subcategoria')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
                                             @endcan
                                         </form>
                                     </td>

@@ -5,7 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CalificacionController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\RedSocialController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\SubCategoriaController;
+use App\Http\Controllers\DireccionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,4 +82,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('redsocials', App\Http\Controllers\RedSocialController::class);
     Route::resource('imagens', App\Http\Controllers\ImagenController::class);
     Route::resource('direccions', App\Http\Controllers\DireccionController::class);
+    Route::get('/servicios/{servicioId}/calificar', [CalificacionController::class, 'calificar'])->name('servicios.prueba');
+
+    Route::post('/calificaciones', [CalificacionController::class, 'store'])->name('calificaciones.store');
+
+    Route::get('/servicios/{servicioId}/promedio', [App\Http\Controllers\CalificacionController::class, 'promedio'])->name('servicios.promedio');
+    Route::get('servicios/estado/{id}', [App\Http\Controllers\ServicioController::class, 'estado'])->name('servicios.estado');
 });

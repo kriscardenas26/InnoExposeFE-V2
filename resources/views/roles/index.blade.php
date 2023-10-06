@@ -27,13 +27,13 @@
                                     <td>{{ $role->name }}</td>
                                     <td>                                
                                         @can('editar-rol')
-                                            <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Editar</a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('roles.edit',$role->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                         @endcan
                                         
                                         @can('borrar-rol')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                                {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' => 'display:inline']) !!}
+                                        {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar']) !!}
+                                        {!! Form::close() !!}
                                         @endcan
                                     </td>
                                 </tr>
