@@ -35,7 +35,9 @@
                                                  $cant_roles = Role::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fa fa-user-lock f-left"></i><span>{{$cant_roles}}</span></h2>
+                                                @can('ver-rol')
                                                 <p class="m-b-0 text-right"><a href="/roles" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>                                                                

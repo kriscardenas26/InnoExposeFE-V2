@@ -50,6 +50,7 @@ class RedSocialController extends Controller
     public function store(Request $request)
     {
         request()->validate(RedSocial::$rules);
+        // $jsonData = request()->json()->all();
         $galeria = $request->all();
         RedSocial::create($galeria);
         return redirect()->route('redsocials.index')

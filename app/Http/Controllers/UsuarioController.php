@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 //agregamos lo siguiente
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -14,11 +15,19 @@ use Illuminate\Support\Arr;
 
 class UsuarioController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-usuario|crear-usuario|editar-usuario|borrar-usuario')->only('index');
+         $this->middleware('permission:crear-usuario', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-usuario', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-usuario', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    const PAGINACION=10;
     public function index(Request $request)
     {      
         //Sin paginación
@@ -26,8 +35,16 @@ class UsuarioController extends Controller
         return view('usuarios.index',compact('usuarios')); */
 
         //Con paginación
-        $usuarios = User::paginate(5);
-        return view('usuarios.index',compact('usuarios'));
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('user_id', $usuarioss);
+        $buscarpor=$request->get('buscarpor');
+        $usuarios=User::where('name','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+        $us = User::where('id','=', $usuarioss )->paginate($this::PAGINACION);
+        return view('usuarios.index', compact('usuarios','buscarpor','us','esTrabajador'))
+        ->with('i', (request()->input('page', 1) - 1) * $usuarios->perPage());
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
@@ -87,11 +104,16 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('model_id', $usuarioss);
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('usuarios.editar',compact('user','roles','userRole'));
+        return view('usuarios.editar',compact('user','roles','userRole','esTrabajador'));
     }
     
 

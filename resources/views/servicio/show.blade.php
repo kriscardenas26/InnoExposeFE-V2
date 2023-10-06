@@ -13,10 +13,15 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default">
-                   
+                    <div class="card card-default">
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('servicios.index') }}"> Volver</a>
+                            <div class="inline-buttons">
+                                <a class="btn btn-success" href="{{ route('servicios.prueba', ['servicioId' => $galeria->id]) }}"> Calificar</a>
+
+                                <a class="btn btn-warning" href="{{ route('servicios.promedio', ['servicioId' => $galeria->id]) }}"> Promedio</a>
+                                
+                                <a class="btn btn-primary" href="{{ route('servicios.index') }}"> Volver</a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

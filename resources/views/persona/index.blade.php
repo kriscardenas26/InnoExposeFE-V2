@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Listado de personas</h3>
+        <h3 class="page__heading">Listado de Personas</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -51,14 +51,14 @@
 
                                     <td>
                                         <form action="{{ route('personas.destroy',$persona->id) }}" class="formulario-eliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('personas.show',$persona->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('personas.show',$persona->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
                                             @can('editar-persona')
-                                            <a class="btn btn-sm btn-success" href="{{ route('personas.edit',$persona->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('personas.edit',$persona->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-persona')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
                                             @endcan
                                         </form>
                                     </td>
