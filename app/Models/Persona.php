@@ -14,7 +14,7 @@ class Persona extends Model
         'tipoIdentificacion' => 'required',
         'cedulaP' => 'required',
     ];
-    protected $fillable = ['nombreP','apellido1','apellido2','tipoIdentificacion','cedulaP'];
+    protected $fillable = ['nombreP','apellido1','apellido2','tipoIdentificacion','cedulaP','idUsuario'];
 
     use HasFactory;
     protected $table = 'personas';

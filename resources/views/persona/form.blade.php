@@ -30,6 +30,10 @@
                     {{ Form::text('cedulaP', $persona->cedulaP, ['class' => 'form-control' . ($errors->has('cedulaP') ? ' is-invalid' : ''), 'placeholder' => '']) }}
                     {!! $errors->first('cedulaP', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                <div class="form-group">
+                    {{ Form::text('idUsuario', Auth::user()->id, ['class' => 'form-control'  . ($errors->has('idUsuario') ? ' is-invalid' : ''), 'placeholder' => '', 'hidden']) }}
+                    {!! $errors->first('idUsuario', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
             </div>
         </div>
     </div>

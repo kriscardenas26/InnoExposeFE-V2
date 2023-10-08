@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Direccion;
 use App\Models\Persona;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DireccionController extends Controller
 {
@@ -24,9 +25,15 @@ class DireccionController extends Controller
     const PAGINACION=10;
     public function index(Request $request)
     {
+        $usuario = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('user_id', $usuario);
         $buscarpor=$request->get('buscarpor');
         $galerias=Direccion::where('nombreD','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('direccion.index', compact('galerias','buscarpor'))
+        $galeriaU = Direccion::where('idUsuario','=', $usuario )->paginate($this::PAGINACION);
+        return view('direccion.index', compact('galerias','buscarpor','galeriaU','esTrabajador'))
         ->with('i', (request()->input('page', 1) - 1) * $galerias->perPage());
     }
 
@@ -79,10 +86,15 @@ class DireccionController extends Controller
      */
     public function edit($id)
     {
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('model_id', $usuarioss);
         $galeria = Direccion::find($id);
         $temas = Persona::pluck('nombreP','id');
         $temas1 = Servicio::pluck('nombreS','id');
-        return view('direccion.edit', compact('galeria', 'temas', 'temas1'));
+        return view('direccion.edit', compact('galeria', 'temas', 'temas1','esTrabajador'));
     }
 
     /**
