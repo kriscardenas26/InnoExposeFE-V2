@@ -25,6 +25,10 @@
                     {{ Form::select('servicio_id', $temas, $galeria->servicio_id, ['class' => 'form-control' . ($errors->has('servicio_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione']) }}
                     {!! $errors->first('servicio_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                <div class="form-group">
+                    {{ Form::text('idUsuario', Auth::user()->id, ['class' => 'form-control'  . ($errors->has('idUsuario') ? ' is-invalid' : ''), 'placeholder' => '', 'hidden']) }}
+                    {!! $errors->first('idUsuario', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
             </div>
         </div>
     </div>

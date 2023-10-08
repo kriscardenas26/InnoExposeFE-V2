@@ -41,6 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @can('borrar-usuario')
                                 @foreach ($personas as $persona)
                                 <tr>
                                     <td>{{ ++$i }}</td>
@@ -64,6 +65,34 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endcan
+                                @can('ver-contenido')
+                                @if($esTrabajador)
+                                @foreach ($personaU as $persona)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+
+                                    <td>{{ $persona->nombreP }} {{ $persona->apellido1 }} {{ $persona->apellido2 }}</td>
+                                    <td>{{ $persona->tipoIdentificacion }}</td>
+                                    <td>{{ $persona->cedulaP }}</td>
+
+                                    <td>
+                                        <form action="{{ route('personas.destroy',$persona->id) }}" class="formulario-eliminar" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('personas.show',$persona->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                            @can('editar-persona')
+                                            <a class="btn btn-sm btn-success" href="{{ route('personas.edit',$persona->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            @endcan
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-persona')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                @endcan
                             </tbody>
                         </table>
                     </div>

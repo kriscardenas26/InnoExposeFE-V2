@@ -14,7 +14,7 @@ class Direccion extends Model
 
     ];
     protected $fillable =
-     ['nombreD','persona_id','servicio_id'];
+     ['nombreD','persona_id','servicio_id','idUsuario'];
 
     use HasFactory;
     protected $table="direcciones";

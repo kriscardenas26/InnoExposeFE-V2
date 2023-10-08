@@ -20,6 +20,7 @@ class CreatePersonasTable extends Migration
             $table->string('apellido2');
             $table->string('tipoIdentificacion');
             $table->string('cedulaP');
+            $table->integer('idUsuario');
             $table->timestamps();
         });
     }

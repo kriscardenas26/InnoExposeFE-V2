@@ -37,6 +37,7 @@
                                 <th></th>
                             </thead>
                             <tbody>
+                                @can('borrar-usuario')
                                 @foreach ($galerias as $galeria)
                                 <tr>
                                     <td>{{ ++$i }}</td>
@@ -58,6 +59,32 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endcan
+                                @can('ver-contenido')
+                                @if($esTrabajador)
+                                @foreach ($galeriaU as $galeria)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $galeria->Servicio->nombreS }}</td>
+                                    <td>{{ $galeria->nombreD }}</td>
+                                    <td>{{ $galeria->Persona->nombreP}}</td>
+                                    <td>
+                                        <form action="{{ route('direccions.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('direccions.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                            @can('editar-direccion')
+                                            <a class="btn btn-sm btn-success" href="{{ route('direccions.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            @endcan
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-direccion')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                @endcan
                             </tbody>
                         </table>
                     </div>

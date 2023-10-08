@@ -35,24 +35,41 @@
                                 <th style="color:#fff;">Nombre</th>
                                 <th style="color:#fff;">Imagen</th>
                                 <th style="color:#fff;">Servicio </th>
+                                @can('habilitar-imagen')
+                                <th style="color:#fff;">Estado</th>
+                                @endcan
                                 <th style="color:#fff;">Acciones</th>
 
                                 <th></th>
 
                             </thead>
                             <tbody>
+                                @can('borrar-usuario')
                                 @foreach ($galerias as $galeria)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-
                                     <td>{{ $galeria->fileName }}</td>
                                     {{-- <td>{{ $galeria->imagen }}</td> --}}
-
                                     <td>
                                         <img class="rounded-circle" src="{{asset('/imagenes/'.$galeria->urlImage)}}" alt="{{$galeria->imagenes}}" width="100" height="100">
                                     </td>
                                     <td>{{ $galeria->Servicio->nombreS}}</td>
 
+                                    @can('habilitar-imagen')
+                                    @if ($galeria->estado == false)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('imagens.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == true)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('imagens.estado', $galeria->id) }}">Activo</a>
+
+                                        </td>
+                                    @endif
+                                    @endcan
                                     <td>
                                         <form action="{{ route('imagens.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
                                             <a class="btn btn-sm btn-primary " href="{{ route('imagens.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
@@ -68,6 +85,51 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endcan
+                                @can('ver-contenido')
+                                @if($esTrabajador)
+                                @foreach ($galeriaU as $galeria)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+
+                                    <td>{{ $galeria->fileName }}</td>
+                                    {{-- <td>{{ $galeria->imagen }}</td> --}}
+                                    <td>
+                                        <img class="rounded-circle" src="{{asset('/imagenes/'.$galeria->urlImage)}}" alt="{{$galeria->imagenes}}" width="100" height="100">
+                                    </td>
+                                    <td>{{ $galeria->Servicio->nombreS}}</td>
+                                    @can('habilitar-imagen')
+                                    @if ($galeria->estado == false)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('imagens.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == true)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('imagens.estado', $galeria->id) }}">Activo</a>
+
+                                        </td>
+                                    @endif
+                                    @endcan
+                                    <td>
+                                        <form action="{{ route('imagens.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('imagens.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                            @can('editar-imagen')
+                                            <a class="btn btn-sm btn-success" href="{{ route('imagens.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            @endcan
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-imagen')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                @endcan
                             </tbody>
                         </table>
                     </div>
@@ -91,8 +153,6 @@
         )
     </script>
     @endif
-
-
     <script>
         $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();

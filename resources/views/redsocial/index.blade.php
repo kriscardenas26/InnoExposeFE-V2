@@ -35,11 +35,15 @@
                                 <th style="color:#fff;"> Nombre</th>
                                 <th style="color:#fff;">Tipo</th>
                                 <th style="color:#fff;">Servicio </th>
+                                @can('habilitar-redsocial')
+                                <th style="color:#fff;">Estado</th>
+                                @endcan
                                 <th style="color:#fff;">Acciones</th>
                                 <th></th>
 
                             </thead>
                             <tbody>
+                                @can('borrar-usuario')
                                 @foreach ($galerias as $galeria)
                                 <tr>
                                     <td>{{ ++$i }}</td>
@@ -47,7 +51,21 @@
                                     <td>{{ $galeria->nombreRS }}</td>
                                     <td>{{ $galeria->tipoRS }}</td>
                                     <td>{{ $galeria->Servicio->nombreS }}</td>
+                                    @can('habilitar-redsocial')
+                                    @if ($galeria->estado == false)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('redsocials.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == true)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('redsocials.estado', $galeria->id) }}">Activo</a>
 
+                                        </td>
+                                    @endif
+                                    @endcan
                                     <td>
                                         <form action="{{ route('redsocials.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
                                             <a class="btn btn-sm btn-primary " href="{{ route('redsocials.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
@@ -63,6 +81,48 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endcan
+                                @can('ver-contenido')
+                                @if($esTrabajador)
+                                @foreach ($galeriaU as $galeria)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+
+                                    <td>{{ $galeria->nombreRS }}</td>
+                                    <td>{{ $galeria->tipoRS }}</td>
+                                    <td>{{ $galeria->Servicio->nombreS }}</td>
+                                    @can('habilitar-redsocial')
+                                    @if ($galeria->estado == false)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('redsocials.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == true)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('redsocials.estado', $galeria->id) }}">Activo</a>
+
+                                        </td>
+                                    @endif
+                                    @endcan
+                                    <td>
+                                        <form action="{{ route('redsocials.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('redsocials.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                            @can('editar-redsocial')
+                                            <a class="btn btn-sm btn-success" href="{{ route('redsocials.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            @endcan
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-redsocial')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                @endcan
                             </tbody>
                         </table>
                     </div>
