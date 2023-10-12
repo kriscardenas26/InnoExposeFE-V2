@@ -42,8 +42,8 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav font-weight-bold mx-auto py-0">
-                    <a href="index" class="nav-item nav-link active">Home</a>
-                    <a href="about" class="nav-item nav-link">About</a>
+                    <a href="index" class="nav-item nav-link active">Inicio</a>
+                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
                     <a href="class" class="nav-item nav-link">Classes</a>
                     <a href="team" class="nav-item nav-link">Teachers</a>
                     <a href="gallery" class="nav-item nav-link">Gallery</a>
@@ -59,12 +59,12 @@
                 @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Iniciar Sesión</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarse</a>
                         @endif
                     @endauth
                 </div>
