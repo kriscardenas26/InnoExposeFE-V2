@@ -69,7 +69,14 @@ class SeederTablaPermisos extends Seeder
             'ver-direccion',
             'crear-direccion',
             'editar-direccion',
-            'borrar-direccion'
+            'borrar-direccion',
+
+            //Permisos adicionales
+            'habilitar-servicio',
+            'habilitar-redsocial',
+            'habilitar-imagen',
+            'ver-contenido',
+            'ver-vista'
 
         ];
 

@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Servicio</h3>
+        <h3 class="page__heading">Listado de Servicios</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -36,12 +36,16 @@
                                 <th style="color:#fff;">Encargado</th>
                                 <th style="color:#fff;">Categoría</th>
                                 <th style="color:#fff;">Subcategoría</th>
+                                @can('habilitar-servicio')
+                                <th style="color:#fff;">Estado</th>
+                                @endcan
                                 <th style="color:#fff;">Acciones</th>
 
                                 <th></th>
 
                             </thead>
                             <tbody>
+                                @can('borrar-usuario')
                                 @foreach ($galerias as $galeria)
                                 <tr>
                                     <td>{{ ++$i }}</td>
@@ -49,6 +53,61 @@
                                     <td>{{ $galeria->Persona->nombreP }}</td>
                                     <td>{{ $galeria->Subcategoria->Categoria->nombreC}}</td>
                                     <td>{{ $galeria->Subcategoria->nombreSC}}</td>
+                                    @can('habilitar-servicio')
+                                    @if ($galeria->estado == false)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('servicios.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == true)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('servicios.estado', $galeria->id) }}">Activo</a>
+
+                                        </td>
+                                    @endif
+                                    @endcan
+                                    <td>
+                                        <form action="{{ route('servicios.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('servicios.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                            @can('editar-servicio')
+                                            <a class="btn btn-sm btn-success" href="{{ route('servicios.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            @endcan
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-servicio')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            @endcan
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endcan
+                                @can('ver-contenido')
+                                @if($esTrabajador)
+                                @foreach ($galeriaU as $galeria)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $galeria->nombreS }}</td>
+                                    <td>{{ $galeria->Persona->nombreP }}</td>
+                                    <td>{{ $galeria->Subcategoria->Categoria->nombreC}}</td>
+                                    <td>{{ $galeria->Subcategoria->nombreSC}}</td>
+                                    @can('habilitar-servicio')
+                                    @if ($galeria->estado == 0)
+                                        <td>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="{{ route('servicios.estado', $galeria->id) }}">Inactivo</a>
+                                        </td>
+                                    @endif
+                                    @if ($galeria->estado == 1)
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                                href="{{ route('servicios.estado', $galeria->id) }}">Activo</a>
+
+                                        </td>
+                                    @endif
+                                    @endcan
                                     <td>
                                         <form action="{{ route('servicios.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
                                             <a class="btn btn-sm btn-primary " href="{{ route('servicios.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -64,6 +123,8 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endif
+                                @endcan
                             </tbody>
                         </table>
                     </div>

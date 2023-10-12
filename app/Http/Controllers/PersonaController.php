@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PersonaController extends Controller
 {
@@ -22,10 +23,15 @@ class PersonaController extends Controller
     const PAGINACION=10;
     public function index(Request $request)
     {
+        $usuario = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('user_id', $usuario);
         $buscarpor=$request->get('buscarpor');
         $personas=Persona::where('nombreP','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        
-        return view('persona.index', compact('personas','buscarpor'))
+        $personaU = Persona::where('idUsuario','=', $usuario )->paginate($this::PAGINACION);
+        return view('persona.index', compact('personas','buscarpor','personaU','esTrabajador'))
         ->with('i', (request()->input('page', 1) - 1) * $personas->perPage());
     }
 
@@ -77,9 +83,14 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('model_id', $usuarioss);
         $persona = Persona::find($id);
 
-        return view('persona.edit', compact('persona'));
+        return view('persona.edit', compact('persona', 'esTrabajador'));
     }
 
     /**

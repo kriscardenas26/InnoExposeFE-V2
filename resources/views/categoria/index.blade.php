@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Listado de categorías</h3>
+        <h3 class="page__heading">Listado de Categorías</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -28,11 +28,12 @@
                 @endif
 
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive" >
                         <table class="table table-striped mt-2">
                             <thead style="background-color:#6777ef">
                                 <th style="color:#fff;">No</th>
                                 <th style="color:#fff;">Nombre</th>
+                                <th style="color:#fff;">Acciones</th>
 
                                 <th></th>
                                 </tr>
@@ -46,14 +47,14 @@
 
                                     <td>
                                         <form action="{{ route('categorias.destroy',$categoria->id) }}" class="formulario-eliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('categorias.show',$categoria->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('categorias.show',$categoria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
                                             @can('editar-categoria')
-                                            <a class="btn btn-sm btn-success" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-categoria')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
                                             @endcan
                                         </form>
                                     </td>
