@@ -63,6 +63,9 @@ Route::get('team', function () {
 Route::get('/', function () {
     return view('index');
 });
+Route::get('nuevo', function () {
+    return view('auth/redireccionamiento');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -88,4 +91,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/servicios/{servicioId}/promedio', [App\Http\Controllers\CalificacionController::class, 'promedio'])->name('servicios.promedio');
     Route::get('servicios/estado/{id}', [App\Http\Controllers\ServicioController::class, 'estado'])->name('servicios.estado');
+    Route::get('imagens/estado/{id}', [App\Http\Controllers\ImagenController::class, 'estado'])->name('imagens.estado');
+    Route::get('redsocials/estado/{id}', [App\Http\Controllers\RedSocialController::class, 'estado'])->name('redsocials.estado');
 });

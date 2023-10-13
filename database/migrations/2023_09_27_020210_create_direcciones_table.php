@@ -19,6 +19,7 @@ class CreateDireccionesTable extends Migration
             $table->unsignedBigInteger('persona_id');
             $table->unsignedBigInteger('servicio_id');
             $table->string('nombreD');
+            $table->integer('idUsuario');
             $table->foreign('persona_id')->references('id')
             ->on('personas')->onDelete('cascade');
             $table->foreign('servicio_id')->references('id')

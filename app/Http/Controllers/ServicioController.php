@@ -58,9 +58,10 @@ class ServicioController extends Controller
     {
         $galeria = new Servicio();
         $temas = Persona::pluck('nombreP','id');
-        $temas1 = Categoria::pluck('nombreC','id');
-        $temas2 = Subcategoria::pluck('nombreSC','id');
-        return view('servicio.create', compact('galeria', 'temas', 'temas1', 'temas2'));
+        $categorias  = Categoria::pluck('nombreC','id');
+        $subcategorias = Subcategoria::all(); // Obtén una colección de modelos Subcategoria
+
+        return view('servicio.create', compact('galeria', 'temas', 'categorias', 'subcategorias'));
     }
 
     /**
@@ -106,9 +107,9 @@ class ServicioController extends Controller
                     ->where('model_id', $usuarioss);
         $galeria = Servicio::find($id);
         $temas = Persona::pluck('nombreP','id');
-        $temas1 = Categoria::pluck('nombreC','id');
-        $temas2 = Subcategoria::pluck('nombreSC','id');
-        return view('servicio.edit', compact('galeria', 'temas', 'temas1', 'temas2', 'esTrabajador'));
+        $categorias = Categoria::pluck('nombreC','id');
+        $subcategorias = Subcategoria::all();
+        return view('servicio.edit', compact('galeria', 'temas', 'categorias', 'subcategorias', 'esTrabajador'));
     }
 
     /**

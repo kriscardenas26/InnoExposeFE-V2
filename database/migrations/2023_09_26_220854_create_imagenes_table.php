@@ -19,6 +19,8 @@ class CreateImagenesTable extends Migration
             $table->unsignedBigInteger('servicio_id');
             $table->string('fileName');
             $table->string('urlImage');
+            $table->boolean('estado');
+            $table->integer('idUsuario');
             $table->foreign('servicio_id')->references('id')
             ->on('servicios')->onDelete('cascade');
         });

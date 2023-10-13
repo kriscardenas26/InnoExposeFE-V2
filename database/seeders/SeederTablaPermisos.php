@@ -73,6 +73,8 @@ class SeederTablaPermisos extends Seeder
 
             //Permisos adicionales
             'habilitar-servicio',
+            'habilitar-redsocial',
+            'habilitar-imagen',
             'ver-contenido',
             'ver-vista'
 

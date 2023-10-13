@@ -46,14 +46,6 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <div class="row py-3">
-                                            <div class="col-md-4 col-lg-3">
-                                                <div class="form-check">
-                                                    <input type="checkbox" name="select-all" id="select-all" class="form-check-input">
-                                                    <label class="form-check-label" for="">Seleccionar todos los permisos</label>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -66,3 +58,4 @@
         </div>
     </section>
 @endsection
+
