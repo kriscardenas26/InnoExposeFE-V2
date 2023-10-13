@@ -65,7 +65,7 @@
 }
 
 a {
-    color: #6777ef;
+    color: #000000;
     font-weight: 500;
     transition: all .5s;
     -webkit-transition: all .5s;
@@ -165,6 +165,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
+    font-family: "Handlee", cursive;
 }
 
 p, ul:not(.list-unstyled), ol {
@@ -176,7 +177,7 @@ p, ul:not(.list-unstyled), ol {
 }
 
 .text-muted {
-    color: #98a6ad !important;
+    color: #ffffff !important;
 }
 
 /* 3.2 Form */
@@ -1822,30 +1823,30 @@ h6 .badge {
 }
 
 .btn-primary, .btn-primary.disabled {
-    box-shadow: 0 2px 6px #acb5f6;
-    background-color: #6777ef;
-    border-color: #6777ef;
+    box-shadow: 0 2px 6px #95effd;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
 
 .btn-primary:focus, .btn-primary.disabled:focus {
-    background-color: #394eea !important;
+    background-color: #17a2b8 !important;
 }
 
 .btn-primary:focus:active, .btn-primary.disabled:focus:active {
-    background-color: #394eea !important;
+    background-color: #17a2b8 !important;
 }
 
 .btn-primary:active, .btn-primary:hover, .btn-primary.disabled:active, .btn-primary.disabled:hover {
-    background-color: #394eea !important;
+    background-color: #17a2b8 !important;
 }
 
 .btn-outline-primary, .btn-outline-primary.disabled {
-    border-color: #6777ef;
-    color: #6777ef;
+    border-color: #17a2b8;
+    color: #17a2b8;
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.disabled:hover, .btn-outline-primary.disabled:focus, .btn-outline-primary.disabled:active {
-    background-color: #6777ef !important;
+    background-color: #17a2b8 !important;
     color: #fff;
 }
 
@@ -1856,7 +1857,7 @@ h6 .badge {
 
 .btn-outline-white:hover, .btn-outline-white:focus, .btn-outline-white:active, .btn-outline-white.disabled:hover, .btn-outline-white.disabled:focus, .btn-outline-white.disabled:active {
     background-color: #fff;
-    color: #6777ef;
+    color: #17a2b8;
 }
 
 .btn-round {
@@ -1897,7 +1898,7 @@ h6 .badge {
 }
 
 .btn-group .btn.active {
-    background-color: #6777ef;
+    background-color: #17a2b8;
     color: #fff;
 }
 
@@ -1914,7 +1915,7 @@ h6 .badge {
 /* 3.13 Media */
 .media .media-right {
     float: right;
-    color: #6777ef;
+    color: #17a2b8;
     font-weight: 600;
     font-size: 16px;
 }
