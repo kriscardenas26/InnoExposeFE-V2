@@ -52,12 +52,17 @@
                     {{ Form::label('Categoríaㅤㅤㅤㅤㅤㅤ‎ ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ Subcategoría') }}
                     <div class="row">
                         <div class="col-md-6">
-                        {{ Form::select('categoria_id', $temas1, $galeria->subcategoria_id, ['class' => 'form-control' . ($errors->has('subcategoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione']) }}
-                    {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
+                        {{ Form::select('categoria_id', $categorias, $galeria->categoria_id, ['class' => 'form-control', 'id' => 'categoriaSelect', 'placeholder' => 'Seleccione']) }}
                         </div>
                         <div class="col-md-6">
-                    {{ Form::select('subcategoria_id', $temas2, $galeria->subcategoria_id, ['class' => 'form-control' . ($errors->has('subcategoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione']) }}
-                    {!! $errors->first('subcategoria_id', '<div class="invalid-feedback">:message</div>') !!}
+                        <select name="subcategoria_id" id="subcategoriaSelect" class="form-control">
+                            <option value="" disabled selected>Seleccione</option>
+                            @foreach ($subcategorias as $subcategoria)
+                                <option value="{{ $subcategoria->id }}" data-categoria="{{ $subcategoria->categoria_id }}">
+                                    {{ $subcategoria->nombreSC }}
+                                </option>
+                            @endforeach
+                        </select>
                         </div>
                     </div>
                 </div>
@@ -79,3 +84,19 @@
         <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 </div>
+
+<script>
+    document.getElementById('categoriaSelect').addEventListener('change', function() {
+        var selectedCategoria = this.value;
+        var subcategoriaSelect = document.getElementById('subcategoriaSelect');
+
+        // Recorre las opciones de subcategoría y muestra u oculta según la categoría seleccionada
+        Array.from(subcategoriaSelect.options).forEach(function(option) {
+            if (selectedCategoria === option.getAttribute('data-categoria')) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+    });
+</script>
