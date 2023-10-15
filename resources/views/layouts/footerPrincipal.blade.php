@@ -48,14 +48,15 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primaryF mb-4">Accesos rápidos</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                    <a class="text-white mb-2" href="{{ route('home') }}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tutoriales</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Iniciar Sesión</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Registrarse</a>
+                    <a class="text-white mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Iniciar Sesión</a>
+                    <a class="text-white mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>Registrarse</a>
                 </div>
             </div>
            
+
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primaryF mb-4">Suscribirse</h3>
                 <form action="">
