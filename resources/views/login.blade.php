@@ -7,7 +7,7 @@
     <title>InnoExpose</title>
     
     <!-- Favicon -->
-    <link href="img/Logo Icono.svg" rel="icon">
+    <link href="img/Logo Icono.svg" rel="icon1.png">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
