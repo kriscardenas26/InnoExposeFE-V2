@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\RedSocial;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
@@ -23,10 +23,29 @@ class RedSocialController extends Controller
     const PAGINACION=10;
     public function index(Request $request)
     {
+        $usuario = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('user_id', $usuario);
         $buscarpor=$request->get('buscarpor');
         $galerias=RedSocial::where('nombreRS','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('redsocial.index', compact('galerias','buscarpor'))
+        $galeriaU = RedSocial::where('idUsuario','=', $usuario )->paginate($this::PAGINACION);
+        return view('redsocial.index', compact('galerias','buscarpor','galeriaU','esTrabajador'))
         ->with('i', (request()->input('page', 1) - 1) * $galerias->perPage());
+    }
+
+    public function estado($id)
+    {
+        $galerias = RedSocial::FindOrFail($id);
+        if($galerias['estado'] == true){
+            $galerias['estado'] = false;
+        }else{
+            $galerias['estado'] = true;
+        }
+        $galerias->update(); 
+        return redirect()->route('redsocials.index')
+        ->with('success', 'Estado de la red social actualizado correctamente');
     }
 
     /**
@@ -49,7 +68,9 @@ class RedSocialController extends Controller
      */
     public function store(Request $request)
     {
+        $request['estado'] = false;
         request()->validate(RedSocial::$rules);
+        // $jsonData = request()->json()->all();
         $galeria = $request->all();
         RedSocial::create($galeria);
         return redirect()->route('redsocials.index')
@@ -76,9 +97,14 @@ class RedSocialController extends Controller
      */
     public function edit($id)
     {
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('model_id', $usuarioss);
         $galeria = RedSocial::find($id);
         $temas = Servicio::pluck('nombreS','id');
-        return view('redsocial.edit', compact('galeria', 'temas'));
+        return view('redsocial.edit', compact('galeria', 'temas', 'esTrabajador'));
     }
 
     /**

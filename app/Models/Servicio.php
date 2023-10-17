@@ -15,14 +15,15 @@ class Servicio extends Model
         'diaF' => 'required',
         'horaI' => 'required',
         'horaF' => 'required',
+        'estado' => 'required',
         'persona_id' => 'required',
         'categoria_id' => 'required',
         'subcategoria_id' => 'required',
 
     ];
     protected $fillable =
-     ['nombreS','cedulaS','descripcionS','diaI','diaF','horaI','horaF','persona_id'
-     ,'categoria_id','subcategoria_id'];
+     ['nombreS','cedulaS','descripcionS','diaI','diaF','horaI','horaF','estado','persona_id'
+     ,'categoria_id','subcategoria_id','idUsuario'];
 
     use HasFactory;
     protected $stable="servicios";

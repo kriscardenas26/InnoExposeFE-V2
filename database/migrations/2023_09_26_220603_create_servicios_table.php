@@ -20,12 +20,14 @@ class CreateServiciosTable extends Migration
             $table->unsignedBigInteger('subcategoria_id'); 
             $table->string('categoria_id');
             $table->string('nombreS');
-            $table->integer('cedulaS');
+            $table->integer('cedulaS')->nullable();
             $table->string('descripcionS');
             $table->string('diaI');
             $table->string('diaF');
             $table->time('horaI');
             $table->time('horaF');
+            $table->boolean('estado');
+            $table->integer('idUsuario');
             $table->foreign('persona_id')->references('id')
             ->on('personas')->onDelete('cascade');
             $table->foreign('subcategoria_id')->references('id')

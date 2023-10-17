@@ -10,9 +10,10 @@ class Imagen extends Model
     static $rules = [
 		'fileName' => 'required',
         'urlImage' => 'required|image|mimes:jpeg,png,svg|max: 8388608',
+        'estado' => 'required',
         'servicio_id' => 'required',
     ];
-    protected $fillable = ['fileName','urlImage','servicio_id'];
+    protected $fillable = ['fileName','urlImage','estado','servicio_id','idUsuario'];
 
     use HasFactory;
     protected $table = 'imagenes';

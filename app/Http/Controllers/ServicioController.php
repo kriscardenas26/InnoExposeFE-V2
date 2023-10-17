@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Servicio;
 use App\Models\Subcategoria;
 use App\Models\Categoria;
 use App\Models\Persona;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ServicioController extends Controller
 {
     function __construct()
@@ -25,10 +25,28 @@ class ServicioController extends Controller
     const PAGINACION=10;
     public function index(Request $request)
     {
+        $usuario = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('user_id', $usuario);
         $buscarpor=$request->get('buscarpor');
         $galerias=Servicio::where('nombreS','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('servicio.index', compact('galerias','buscarpor'))
+        $galeriaU = Servicio::where('idUsuario','=', $usuario )->paginate($this::PAGINACION);
+        return view('servicio.index', compact('galerias','buscarpor','galeriaU','esTrabajador'))
         ->with('i', (request()->input('page', 1) - 1) * $galerias->perPage());
+    }
+    public function estado($id)
+    {
+        $galerias = Servicio::FindOrFail($id);
+        if($galerias['estado'] == true){
+            $galerias['estado'] = false;
+        }else{
+            $galerias['estado'] = true;
+        }
+        $galerias->update(); 
+        return redirect()->route('servicios.index')
+        ->with('success', 'Estado del servicio actualizado correctamente');
     }
 
     /**
@@ -40,9 +58,10 @@ class ServicioController extends Controller
     {
         $galeria = new Servicio();
         $temas = Persona::pluck('nombreP','id');
-        $temas1 = Categoria::pluck('nombreC','id');
-        $temas2 = Subcategoria::pluck('nombreSC','id');
-        return view('servicio.create', compact('galeria', 'temas', 'temas1', 'temas2'));
+        $categorias  = Categoria::pluck('nombreC','id');
+        $subcategorias = Subcategoria::all(); // Obtén una colección de modelos Subcategoria
+
+        return view('servicio.create', compact('galeria', 'temas', 'categorias', 'subcategorias'));
     }
 
     /**
@@ -53,6 +72,7 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
+        $request['estado'] = false;
         request()->validate(Servicio::$rules);
         $galeria = $request->all();
         Servicio::create($galeria);
@@ -80,11 +100,16 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
+        $usuarioss = auth()->user()->id;
+        $consulta = DB::table('roles')->where('name', 'Cliente')->first()->id;
+        $esTrabajador = DB::table('model_has_roles')
+                    ->where('role_id', $consulta)
+                    ->where('model_id', $usuarioss);
         $galeria = Servicio::find($id);
         $temas = Persona::pluck('nombreP','id');
-        $temas1 = Categoria::pluck('nombreC','id');
-        $temas2 = Subcategoria::pluck('nombreSC','id');
-        return view('servicio.edit', compact('galeria', 'temas', 'temas1', 'temas2'));
+        $categorias = Categoria::pluck('nombreC','id');
+        $subcategorias = Subcategoria::all();
+        return view('servicio.edit', compact('galeria', 'temas', 'categorias', 'subcategorias', 'esTrabajador'));
     }
 
     /**
@@ -122,7 +147,7 @@ class ServicioController extends Controller
     {
         $galeria = Servicio::FindOrFail($id);
         $galeria->delete();
-        return redirect()->route('galerias.index')
+        return redirect()->route('servicios.index')
             ->with('success', 'Servicio eliminado correctamente');
     }
 }

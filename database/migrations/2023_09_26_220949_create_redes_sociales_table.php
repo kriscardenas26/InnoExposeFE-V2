@@ -20,6 +20,8 @@ class CreateRedesSocialesTable extends Migration
             $table->string('nombreRS');
             $table->string('tipoRS');
             $table->string('link');
+            $table->boolean('estado');
+            $table->integer('idUsuario');
             $table->foreign('servicio_id')->references('id')
             ->on('servicios')->onDelete('cascade');
         });

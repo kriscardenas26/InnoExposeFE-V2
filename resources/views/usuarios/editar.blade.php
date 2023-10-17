@@ -49,12 +49,24 @@
                                     {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
                                 </div>
                             </div>
+                            @can('borrar-usuario')
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="">Roles</label>
                                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
+                            @endcan
+                            @can('ver-contenido')
+                            @if($esTrabajador)
+                            <div class="col-xs-12 col-sm-12 col-md-12" id="auto" style="display: none">
+                                <div class="form-group">
+                                    <label for="">Roles</label>
+                                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            @endif
+                            @endcan
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
