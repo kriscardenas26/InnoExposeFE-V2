@@ -6,7 +6,7 @@
     <title>@yield('title') </title>
 
     <!-- General CSS Files -->
-    <link href="img/Logo Icono.svg" rel="icon">
+    <link href="img/Logo Icono.svg" rel="icon1">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
