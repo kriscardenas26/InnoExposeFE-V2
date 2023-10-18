@@ -48,6 +48,6 @@
     </a>
     @endcan
     <a class="nav-link" href="/">
-        <i class=" "></i><span>Inicio</span>
+        <i class=" fas fa-home"></i><span>Inicio</span>
     </a>
 </li>

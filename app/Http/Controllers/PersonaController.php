@@ -54,7 +54,25 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Persona::$rules);
+        $request->validate([
+            'nombreP' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'apellido1' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'apellido2' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'tipoIdentificacion' => 'required|in:Nacional,Pasaporte,Nacionalizado',
+            'cedulaP' => 'required|numeric',
+        ], [
+            'nombreP.required' => 'El campo nombre es obligatorio.',
+            'nombreP.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'apellido1.required' => 'El primer apellido es obligatorio.',
+            'apellido1.regex' => 'El primer apellido debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'apellido2.required' => 'El segundo apellido es obligatorio.',
+            'apellido2.regex' => 'El segundo apellido debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'tipoIdentificacion.required' => 'El campo tipo de identificación es obligatorio.',
+            'tipoIdentificacion.in' => 'El tipo de identificación seleccionado no es válido.',
+            'cedulaP.required' => 'El campo cédula es obligatorio.',
+            'cedulaP.numeric' => 'La cédula debe ser un número.',
+        ]);
+        
 
         $persona = Persona::create($request->all());
 
@@ -102,7 +120,24 @@ class PersonaController extends Controller
      */
     public function update(Request $request, Persona $persona)
     {
-        request()->validate(Persona::$rules);
+        $request->validate([
+            'nombreP' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'apellido1' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'apellido2' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'tipoIdentificacion' => 'required|in:Nacional,Pasaporte,Nacionalizado',
+            'cedulaP' => 'required|numeric',
+        ], [
+            'nombreP.required' => 'El campo nombre es obligatorio.',
+            'nombreP.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'apellido1.required' => 'El primer apellido es obligatorio.',
+            'apellido1.regex' => 'El primer apellido debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'apellido2.required' => 'El segundo apellido es obligatorio.',
+            'apellido2.regex' => 'El segundo apellido debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'tipoIdentificacion.required' => 'El campo tipo de identificación es obligatorio.',
+            'tipoIdentificacion.in' => 'El tipo de identificación seleccionado no es válido.',
+            'cedulaP.required' => 'El campo cédula es obligatorio.',
+            'cedulaP.numeric' => 'La cédula debe ser un número.',
+        ]);
         $persona->update($request->all());
         return redirect()->route('personas.index')
             ->with('success', 'Persona actualizada correctamente');

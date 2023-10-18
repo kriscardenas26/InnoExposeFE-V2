@@ -48,10 +48,16 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Categoria::$rules);
-
+        $request->validate([
+            'nombreC' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/', 'unique:categorias,nombreC']
+        ], [
+            'nombreC.required' => 'El campo nombre es obligatorio.',
+            'nombreC.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'nombreC.unique' => 'Ya existe un registro en el sistema con este nombre.'
+        ]);
+    
         $categoria = Categoria::create($request->all());
-
+    
         return redirect()->route('categorias.index')
             ->with('success', 'Categoria creada exitosamente.');
     }
@@ -91,10 +97,16 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        request()->validate(Categoria::$rules);
-
+        $request->validate([
+            'nombreC' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/', 'unique:categorias,nombreC']
+        ], [
+            'nombreC.required' => 'El campo nombre es obligatorio.',
+            'nombreC.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'nombreC.unique' => 'Ya existe un registro en el sistema con este nombre.'
+        ]);
+    
         $categoria->update($request->all());
-
+    
         return redirect()->route('categorias.index')
             ->with('success', 'Categoria actualizada correctamente');
     }

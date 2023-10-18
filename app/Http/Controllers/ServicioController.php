@@ -73,7 +73,38 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         $request['estado'] = false;
-        request()->validate(Servicio::$rules);
+        $request->validate([
+            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s]*$/'],
+            'descripcionS' => 'required|max:100',
+            'cedulaS' => ['nullable', 'regex:/^[0-9\s]*$/'],
+            'horaI' => 'required|date_format:H:i',
+            'horaF' => 'required|date_format:H:i|after:horaI',
+            'categoria_id' => 'required|exists:categorias,id',
+            'persona_id' => 'required|exists:personas,id',
+            'diaI' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+            'diaF' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+        ], [
+            'nombreS.required' => 'El campo nombre es obligatorio.',
+            'nombreS.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'descripcionS.required' => 'El campo descripción es obligatorio.',
+            'descripcionS.max' => 'La descripción no puede tener más de 100 caracteres.',
+            'cedulaS.regex' => 'El campo cédula solo puede contener números.',
+            'horaI.required' => 'El campo hora de apertura es obligatorio.',
+            'horaI.date_format' => 'El campo hora de apertura debe tener un formato válido (HH:MM).',
+            'horaF.required' => 'El campo hora de cierre es obligatorio.',
+            'horaF.date_format' => 'El campo hora de cierre debe tener un formato válido (HH:MM).',
+            'horaF.after' => 'La hora de cierre debe ser posterior a la hora de apertura.',
+            'categoria_id.required' => 'Debes seleccionar una categoría.',
+            'categoria_id.exists' => 'La categoría seleccionada no es válida.',
+            'persona_id.required' => 'Debes seleccionar una persona encargada.',
+            'persona_id.exists' => 'La persona encargada seleccionada no es válida.',
+            'diaI.required' => 'El día de apertura es obligatorio.',
+            'diaI.in' => 'El día de apertura debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+            'diaF.required' => 'El día de cierre es obligatorio.',
+            'diaF.in' => 'El día de cierre debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+        ]);
+        
+        
         $galeria = $request->all();
         Servicio::create($galeria);
         return redirect()->route('servicios.index')
@@ -121,6 +152,36 @@ class ServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s]*$/'],
+            'descripcionS' => 'required|max:100',
+            'cedulaS' => ['nullable', 'regex:/^[0-9\s]*$/'],
+            'horaI' => 'required|date_format:H:i',
+            'horaF' => 'required|date_format:H:i|after:horaI',
+            'categoria_id' => 'required|exists:categorias,id',
+            'persona_id' => 'required|exists:personas,id',
+            'diaI' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+            'diaF' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+        ], [
+            'nombreS.required' => 'El campo nombre es obligatorio.',
+            'nombreS.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'descripcionS.required' => 'El campo descripción es obligatorio.',
+            'descripcionS.max' => 'La descripción no puede tener más de 100 caracteres.',
+            'cedulaS.regex' => 'El campo cédula solo puede contener números.',
+            'horaI.required' => 'El campo hora de apertura es obligatorio.',
+            'horaI.date_format' => 'El campo hora de apertura debe tener un formato válido (HH:MM).',
+            'horaF.required' => 'El campo hora de cierre es obligatorio.',
+            'horaF.date_format' => 'El campo hora de cierre debe tener un formato válido (HH:MM).',
+            'horaF.after' => 'La hora de cierre debe ser posterior a la hora de apertura.',
+            'categoria_id.required' => 'Debes seleccionar una categoría.',
+            'categoria_id.exists' => 'La categoría seleccionada no es válida.',
+            'persona_id.required' => 'Debes seleccionar una persona encargada.',
+            'persona_id.exists' => 'La persona encargada seleccionada no es válida.',
+            'diaI.required' => 'El día de apertura es obligatorio.',
+            'diaI.in' => 'El día de apertura debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+            'diaF.required' => 'El día de cierre es obligatorio.',
+            'diaF.in' => 'El día de cierre debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+        ]);
         $galeria = Servicio::findOrFail($id);
         $galeria->nombreS  = $request->get('nombreS');
         $galeria->cedulaS  = $request->get('cedulaS');

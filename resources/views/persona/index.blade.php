@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped mt-2">
-                            <thead style="background-color:#6777ef">
+                            <thead style="background-color:#14a3bb">
                                 <th style="color:#fff;">No</th>
                                 <th style="color:#fff;">Nombre completo</th>
                                 <th style="color:#fff;">Tipo ID</th>
