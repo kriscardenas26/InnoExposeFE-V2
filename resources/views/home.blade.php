@@ -21,7 +21,9 @@
                                                 $cant_usuarios = User::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{$cant_usuarios}}</span></h2>
+                                                @can('ver-usuario') 
                                                 <p class="m-b-0 text-right"><a href="/usuarios" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>                                            
                                         </div>                                    
                                     </div>
@@ -66,7 +68,9 @@
                                                 $cant_personas = Subcategoria::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="far fa-edit f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-subcategoria') 
                                                 <p class="m-b-0 text-right"><a href="/subcategorias" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +83,9 @@
                                                 $cant_personas = Persona::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fas fa-id-card f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-persona') 
                                                 <p class="m-b-0 text-right"><a href="/personas" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +98,9 @@
                                                 $cant_personas = Servicio::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fas fa-user-plus f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-servicio') 
                                                 <p class="m-b-0 text-right"><a href="/servicios" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +113,9 @@
                                                 $cant_personas = Direccion::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fas fa-map-marker-alt f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-direccion') 
                                                 <p class="m-b-0 text-right"><a href="/direccions" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +128,9 @@
                                                 $cant_personas = RedSocial::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="far fa-thumbs-up f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-redsocial') 
                                                 <p class="m-b-0 text-right"><a href="/redsocials" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +143,9 @@
                                                 $cant_personas = Imagen::count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fas fa-images f-left"></i><span>{{$cant_personas}}</span></h2>
+                                                @can('ver-imagen') 
                                                 <p class="m-b-0 text-right"><a href="/imagens" class="text-white">Ver más</a></p>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
@@ -144,4 +158,3 @@
         </div>
     </section>
 @endsection
-

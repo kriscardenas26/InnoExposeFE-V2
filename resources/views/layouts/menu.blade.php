@@ -47,4 +47,7 @@
         <i class=" fas fa-images"></i><span>Imágenes</span>
     </a>
     @endcan
+    <a class="nav-link" href="/">
+        <i class=" "></i><span>Inicio</span>
+    </a>
 </li>
