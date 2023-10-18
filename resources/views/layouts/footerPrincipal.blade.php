@@ -58,12 +58,11 @@
 
                     @can('ver-vista') 
                     <a class="text-white mb-2" href="{{ route('home') }}"><i class="fa fa-angle-right mr-2"></i>Admin</a>
-                    <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
-                        onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                    <a class="text-white mb-2" href="{{ url('logout') }}" onclick="event.preventDefault(); localStorage.clear(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out-alt mr-2"></i>Logout
                     </a>
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                    {{ csrf_field() }}
+                        {{ csrf_field() }}
                     </form>
                     @endcan
                 </div>

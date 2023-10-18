@@ -419,7 +419,7 @@
                         </div>
                     </div>
                     <h4>Bernal Guevara R.</h4>
-                    <i>Ayudante</i>
+                    <i>Front-end</i>
                 </div>
             </div>
         </div>

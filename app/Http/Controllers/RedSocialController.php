@@ -69,7 +69,21 @@ class RedSocialController extends Controller
     public function store(Request $request)
     {
         $request['estado'] = false;
-        request()->validate(RedSocial::$rules);
+        $request->validate([
+            'nombreRS' => ['required', 'regex:/^[A-Z0-9][A-Za-z0-9\s]*$/'],
+            'link' => 'required|url',
+            'tipoRS' => 'required|in:Facebook,Instagram,TikTok',
+            'servicio_id' => 'required|exists:servicios,id',
+        ], [
+            'nombreRS.required' => 'El campo nombre es obligatorio.',
+            'nombreRS.regex' => 'El campo nombre debe comenzar con una letra mayúscula o número y no puede contener caracteres especiales.',
+            'link.required' => 'El campo enlace es obligatorio.',
+            'link.url' => 'El enlace debe ser una URL válida (por ejemplo, "http://ejemplo.com").',
+            'tipoRS.required' => 'El campo tipo de red social es obligatorio.',
+            'tipoRS.in' => 'El tipo de red social seleccionado no es válido.',
+            'servicio_id.required' => 'Debes seleccionar un servicio asociado.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+        ]);
         // $jsonData = request()->json()->all();
         $galeria = $request->all();
         RedSocial::create($galeria);
@@ -116,6 +130,21 @@ class RedSocialController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombreRS' => ['required', 'regex:/^[A-Z0-9][A-Za-z0-9\s]*$/'],
+            'link' => 'required|url',
+            'tipoRS' => 'required|in:Facebook,Instagram,TikTok',
+            'servicio_id' => 'required|exists:servicios,id',
+        ], [
+            'nombreRS.required' => 'El campo nombre es obligatorio.',
+            'nombreRS.regex' => 'El campo nombre debe comenzar con una letra mayúscula o número y no puede contener caracteres especiales.',
+            'link.required' => 'El campo enlace es obligatorio.',
+            'link.url' => 'El enlace debe ser una URL válida (por ejemplo, "http://ejemplo.com").',
+            'tipoRS.required' => 'El campo tipo de red social es obligatorio.',
+            'tipoRS.in' => 'El tipo de red social seleccionado no es válido.',
+            'servicio_id.required' => 'Debes seleccionar un servicio asociado.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+        ]);
         $galeria = RedSocial::findOrFail($id);
         $galeria->nombreRS  = $request->get('nombreRS');
         $galeria->tipoRS  = $request->get('tipoRS');

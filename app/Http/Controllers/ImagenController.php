@@ -70,7 +70,22 @@ class ImagenController extends Controller
     public function store(Request $request)
     {
         $request['estado'] = false;
-        request()->validate(Imagen::$rules);
+        $request->validate([
+            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][a-zA-Z0-9]*$/'],
+            'servicio_id' => 'required|exists:servicios,id',
+            'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'fileName.required' => 'El campo nombre es obligatorio.',
+            'fileName.max' => 'El campo nombre no puede tener más de 30 caracteres.',
+            'fileName.regex' => 'El campo nombre debe comenzar con una letra mayúscula y solo puede contener letras y números.',
+            'servicio_id.required' => 'Debes seleccionar un servicio asociado.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+            'urlImage.required' => 'Debes subir una imagen.',
+            'urlImage.image' => 'El archivo debe ser una imagen válida.',
+            'urlImage.mimes' => 'La imagen debe ser de tipo JPEG, PNG, JPG o GIF.',
+            'urlImage.max' => 'La imagen no puede superar los 2MB de tamaño.',
+        ]);
+        
         $galeria = $request->all();
         if($imagen = $request->file('urlImage')) {
             $rutaGuardarImg = 'imagenes/';
@@ -122,6 +137,21 @@ class ImagenController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][a-zA-Z0-9]*$/'],
+            'servicio_id' => 'required|exists:servicios,id',
+            'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'fileName.required' => 'El campo nombre es obligatorio.',
+            'fileName.max' => 'El campo nombre no puede tener más de 30 caracteres.',
+            'fileName.regex' => 'El campo nombre debe comenzar con una letra mayúscula y solo puede contener letras y números.',
+            'servicio_id.required' => 'Debes seleccionar un servicio asociado.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+            'urlImage.required' => 'Debes subir una imagen.',
+            'urlImage.image' => 'El archivo debe ser una imagen válida.',
+            'urlImage.mimes' => 'La imagen debe ser de tipo JPEG, PNG, JPG o GIF.',
+            'urlImage.max' => 'La imagen no puede superar los 2MB de tamaño.',
+        ]);
         $galeria = Imagen::findOrFail($id);
         $galeria->fileName  = $request->get('fileName');
         $galeria->servicio_id  = $request->get('servicio_id');

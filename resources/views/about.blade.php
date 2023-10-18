@@ -256,7 +256,7 @@
                         </div>
                     </div>
                     <h4>Bernal Guevara R.</h4>
-                    <i>Back-end  Developer</i>
+                    <i>Back-end</i>
                 </div>
             </div>
         </div>
