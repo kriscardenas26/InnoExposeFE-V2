@@ -51,8 +51,21 @@
                     <a class="text-white mb-2" href="{{ route('home') }}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tutoriales</a>
+                    @if(Gate::forUser(Auth::user())->denies('ver-vista'))
                     <a class="text-white mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Iniciar Sesión</a>
                     <a class="text-white mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>Registrarse</a>
+                    @endif
+
+                    @can('ver-vista') 
+                    <a class="text-white mb-2" href="{{ route('home') }}"><i class="fa fa-angle-right mr-2"></i>Admin</a>
+                    <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                        onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                    {{ csrf_field() }}
+                    </form>
+                    @endcan
                 </div>
             </div>
            
