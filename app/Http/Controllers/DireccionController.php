@@ -59,7 +59,18 @@ class DireccionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Direccion::$rules);
+        $request->validate([
+            'persona_id' => 'required|exists:personas,id',
+            'servicio_id' => 'required|exists:servicios,id',
+            'nombreD' => 'required|max:100',
+        ],[
+            'persona_id.required' => 'Debes seleccionar una persona encargada.',
+            'persona_id.exists' => 'La persona encargada seleccionada no es válida.',
+            'servicio_id.required' => 'Debes seleccionar un servicio.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+            'nombreD.required' => 'El campo dirección es obligatorio.',
+            'nombreD.max' => 'La dirección no puede tener más de 100 caracteres.',
+        ]);
         $galeria = $request->all();
         Direccion::create($galeria);
         return redirect()->route('direccions.index')
@@ -106,6 +117,18 @@ class DireccionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'persona_id' => 'required|exists:personas,id',
+            'servicio_id' => 'required|exists:servicios,id',
+            'nombreD' => 'required|max:100',
+        ],[
+            'persona_id.required' => 'Debes seleccionar una persona encargada.',
+            'persona_id.exists' => 'La persona encargada seleccionada no es válida.',
+            'servicio_id.required' => 'Debes seleccionar un servicio.',
+            'servicio_id.exists' => 'El servicio seleccionado no es válido.',
+            'nombreD.required' => 'El campo dirección es obligatorio.',
+            'nombreD.max' => 'La dirección no puede tener más de 100 caracteres.',
+        ]);
         $galeria = Direccion::findOrFail($id);
         $galeria->nombreD  = $request->get('nombreD');
         $galeria->persona_id  = $request->get('persona_id');

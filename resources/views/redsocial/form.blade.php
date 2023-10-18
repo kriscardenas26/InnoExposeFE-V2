@@ -17,7 +17,7 @@
             {{ Form::label('TipoㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤServicio') }}
             <div class="row">
                 <div class="col-md-6">
-                    {{ Form::select('tipoRS', [ 'Facebook' => 'Facebook','Instagram' => 'Instagram','TikTok' => 'TikTok','OnlyFans' => 'OnlyFans']
+                    {{ Form::select('tipoRS', [ 'Facebook' => 'Facebook','Instagram' => 'Instagram','TikTok' => 'TikTok']
                     , $galeria->tipoRS, ['class' => 'form-control' . ($errors->has('tipoRS') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione']) }}
                     {!! $errors->first('tipoRS', '<div class="invalid-feedback">:message</div>') !!}
                 </div>

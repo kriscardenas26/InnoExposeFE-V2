@@ -13,7 +13,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-xl-4">
                                     
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                             <h5>Usuarios</h5>                                               
                                                 @php
@@ -29,7 +29,7 @@
                                     </div>
                                     
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                             <h5>Roles</h5>                                               
                                                 @php
@@ -45,7 +45,7 @@
                                     </div>                                                                
                                     
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Categorías</h5>                                               
                                                 @php
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>SubCategorías</h5>                                               
                                                 @php
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Personas</h5>                                               
                                                 @php
@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Servicios</h5>                                               
                                                 @php
@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Direcciones</h5>                                               
                                                 @php
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Redes Sociales</h5>                                               
                                                 @php
@@ -135,7 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-xl-4">
-                                    <div class="card order-card" style="background-color: #6777ef;">
+                                    <div class="card order-card" style="background-color: #14a3bb;">
                                             <div class="card-block">
                                                 <h5>Imágenes</h5>                                               
                                                 @php
