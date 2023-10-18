@@ -69,8 +69,7 @@ Route::get('nuevo', function () {
 
 
 Auth::routes(['verify' => true]);
-
-//y creamos un grupo de rutas protegidas para los controladores
+//y creamos un grupo de rutas protegidas para los controladores con la verificacion 
 Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('roles', RolController::class);
