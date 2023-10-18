@@ -67,15 +67,12 @@ Route::get('nuevo', function () {
     return view('auth/redireccionamiento');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Auth::routes(['verify' => true]);
 
 //y creamos un grupo de rutas protegidas para los controladores
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('categorias', App\Http\Controllers\CategoriaController::class);
