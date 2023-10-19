@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ValidacionServicio;
 use Illuminate\Support\Facades\DB;
 use App\Models\Servicio;
 use App\Models\Subcategoria;
@@ -104,8 +106,13 @@ class ServicioController extends Controller
             'diaF.in' => 'El día de cierre debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
         ]);
         
-        
         $galeria = $request->all();
+        $email = "innoexpose@gmail.com";
+        $nombreServicio = $request->input('nombreS'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
+        $messages = "Es necesario hacer una revisión para la validación del estado del servicio $nombreServicio";
+        $url = env('APP_URL');
+        $newLink = "http://127.0.0.1:8000/servicios/";
+        Mail::to($email)->send(new ValidacionServicio($email, $messages, $newLink, $nombreServicio));
         Servicio::create($galeria);
         return redirect()->route('servicios.index')
             ->with('success', 'Servicio creado exitosamente.');

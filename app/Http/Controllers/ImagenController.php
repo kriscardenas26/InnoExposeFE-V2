@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ValidacionImagen;
 use Illuminate\Support\Facades\DB;
 use App\Models\Imagen;
 use App\Models\Servicio;
@@ -93,6 +95,12 @@ class ImagenController extends Controller
             $imagen->move($rutaGuardarImg, $imagenGaleria);
             $galeria['urlImage'] = "$imagenGaleria";
         }
+        $email = "innoexpose@gmail.com";
+        $fileName = $request->input('fileName'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
+        $messages = "Es necesario hacer una revisión para la validación del estado del servicio $fileName";
+        $url = env('APP_URL');
+        $newLink = "http://127.0.0.1:8000/imagens/";
+        Mail::to($email)->send(new ValidacionImagen($email, $messages, $newLink, $fileName));
         Imagen::create($galeria);
         return redirect()->route('imagens.index')
             ->with('success', 'Imagen creado exitosamente.');
