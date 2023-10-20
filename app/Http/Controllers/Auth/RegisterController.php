@@ -67,9 +67,9 @@ class RegisterController extends Controller
     {
         $url = env('APP_URL');
         $NewEmail=$data['email'];
-        $newLink = "$url/usuarios/";
+        $newLink = "http://127.0.0.1:8000/usuarios/";
         $email= "innoexpose@gmail.com";
-        $messages ="El nuevo usuario que necesita una asignación de rol es: $NewEmail";
+        $messages ="El nuevo usuario que necesita una asignación de rol es: $NewEmail.";
         Mail::to($email)->send(new VerificacionUsuarios($email,$messages,$newLink));
         return User::create([
             'name' => $data['name'],

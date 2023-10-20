@@ -109,7 +109,7 @@ class ServicioController extends Controller
         $galeria = $request->all();
         $email = "innoexpose@gmail.com";
         $nombreServicio = $request->input('nombreS'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
-        $messages = "Es necesario hacer una revisión para la validación del estado del servicio $nombreServicio";
+        $messages = "Es necesario hacer una revisión para la validación del estado del servicio $nombreServicio.";
         $url = env('APP_URL');
         $newLink = "http://127.0.0.1:8000/servicios/";
         Mail::to($email)->send(new ValidacionServicio($email, $messages, $newLink, $nombreServicio));

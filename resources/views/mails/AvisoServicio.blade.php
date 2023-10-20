@@ -1,7 +1,7 @@
 @extends('mails.layout')
 
 @section('content')
-    <h1 style="font-size: 24px; font-weight: 400; color: #333; margin-bottom: 20px;">Hubo un nuevo registro de servicio en el apartado de servicios {{ $email }}</h1>
+    <h1 style="font-size: 24px; font-weight: 400; color: #333; margin-bottom: 20px;">Hubo un nuevo registro de servicio en el apartado de servicios.</h1>
 
     <p style="font-size: 16px; line-height: 1.5; color: #555; margin-bottom: 30px;">{{ $messages }}</p>
 
@@ -13,7 +13,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <a href="{{ $newLink }}" target="_blank" style="font-size: 16px; font-weight: 600; color: #fff; background-color: #1f2937; border: solid 1px #1f2937; border-radius: 4px; display: inline-block; padding: 10px 20px; text-decoration: none;">Ir a mi cuenta</a>
+                                    <a href="{{ $newLink }}" target="_blank" style="font-size: 16px; font-weight: 600; color: #fff; background-color: #14a3bb; border: solid 1px #14a3bb; border-radius: 4px; display: inline-block; padding: 10px 20px; text-decoration: none;">Ir a mi cuenta</a>
                                 </td>
                             </tr>
                         </tbody>
