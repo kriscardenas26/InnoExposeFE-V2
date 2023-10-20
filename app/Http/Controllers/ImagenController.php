@@ -97,7 +97,7 @@ class ImagenController extends Controller
         }
         $email = "innoexpose@gmail.com";
         $fileName = $request->input('fileName'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
-        $messages = "Es necesario hacer una revisión para la validación del estado del servicio $fileName";
+        $messages = "Es necesario hacer una revisión para la validación del estado de la imagen con nombre de $fileName.";
         $url = env('APP_URL');
         $newLink = "http://127.0.0.1:8000/imagens/";
         Mail::to($email)->send(new ValidacionImagen($email, $messages, $newLink, $fileName));
