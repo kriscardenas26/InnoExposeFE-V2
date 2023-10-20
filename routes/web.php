@@ -27,6 +27,18 @@ Route::get('about', function () {
     return view('about');
 })->name('about');
 
+Route::get('alimentos', function () {
+    return view('alimentos');
+})->name('alimentos');
+
+Route::get('articulos', function () {
+    return view('articulos');
+})->name('articulos');
+
+Route::get('oficios', function () {
+    return view('oficios');
+})->name('oficios');
+
 Route::get('blog', function () {
     return view('blog');
 })->name('blog');
