@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="utf-8">
     <title>InnoExpose</title>
@@ -32,18 +31,20 @@
 
 <body>
 
-       <!-- Navbar Start -->
+   <!-- Navbar Start -->
 @include('layouts.NavBarPrincipal')
     <!-- Navbar End -->
+
+
 
     <!-- Header Start -->
     <div class="container-fluid bg-primary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-            <h3 class="display-3 font-weight-bold text-white">Artículos</h3>
+            <h3 class="display-3 font-weight-bold text-white">Oficios</h3>
             <div class="d-inline-flex text-white">
                 <p class="m-0"><a class="text-white" href="index">Inicio</a></p>
                 <p class="m-0 px-2">/</p>
-                <p class="m-0">Artículos</p>
+                <p class="m-0">Oficios</p>
             </div>
         </div>
     </div>
@@ -51,9 +52,12 @@
 
 
 
-<!-- Footer Start -->
+
+    <!-- Footer Start -->
 @include('layouts.footerPrincipal')
     <!-- Footer End -->
+
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>

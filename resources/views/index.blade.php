@@ -35,8 +35,6 @@
 
     <!-- Navbar Start -->
 @include('layouts.NavBarPrincipal')
-    
-                
     <!-- Navbar End -->
 
 
@@ -497,7 +495,6 @@
 
 
     <!-- Footer Start -->
-
 @include('layouts.footerPrincipal')
     <!-- Footer End -->
 
