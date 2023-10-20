@@ -3,7 +3,6 @@
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
-                    <i class="flaticon-043-teddy-bear"></i>
                     <span class="text-white">InnoExpose</span>
                 </a>
                 <p>InnoExpose es el trampolín que necesitas para destacarte y prosperar en este nuevo paradigma empresarial. 
