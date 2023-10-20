@@ -103,7 +103,7 @@
                     </h5>
                 </div>
     
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqExample">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqExample">
                     <div class="card-body">
                         Puedes ingresar a cada interfaz de servicios, y realizar un filtrados según la subcategoría, jajajaj mentira, no sé que poner en esta respuesta 
                     </div>
