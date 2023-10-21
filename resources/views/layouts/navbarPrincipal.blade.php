@@ -19,8 +19,8 @@
                             <a href="alimentos" class="dropdown-item">Alimentos</a>
                         </div>
                     </div>
-                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
                     <a href="class" class="nav-item nav-link">Tutoriales</a>
+                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
                     <!-- @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
