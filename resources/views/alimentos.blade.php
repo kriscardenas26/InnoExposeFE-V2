@@ -51,6 +51,47 @@
     </div>
     <!-- Header End -->
 
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6 text-end">
+                            <img class="img-fluid bg-white w-100 mb-3 wow fadeIn" data-wow-delay="0.1s" src="img/AlimentosVista.jpg" alt="">
+                            <img class="img-fluid bg-white w-50 wow fadeIn" data-wow-delay="0.2s" src="img/AlimentosVista3.jpg" alt="">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid bg-white w-50 mb-3 wow fadeIn" data-wow-delay="0.3s" src="img/AlimentosVista5.jpg" alt="">
+                            <img class="img-fluid bg-white w-100 wow fadeIn" data-wow-delay="0.4s" src="img/AlimentosVista4.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="section-title">
+                        <p class="fs-5 fw-medium fst-italic text-primary">Encuentra aquí tus</p>
+                        <h1 class="display-6">Alimentos Favoritos</h1>
+                    </div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-4">
+                            <img class="img-fluid bg-white w-100" src="img/FotoIndexMujer.png" alt="">
+                        </div>
+                        <div class="col-sm-8">
+                            <h5>Amplia gama de alimentos</h5>
+                            <p class="mb-0">Aquí podrás encontrar muchas opciones sin salir de casa.</p>
+                        </div>
+                    </div>
+                    <div class="border-top mb-4"></div>
+                    <div class="row g-3">
+                        <div class="col-sm-8">
+                            <h5>Alimentos naturales y comerciales</h5>
+                            <p class="mb-0">Descubre lo mejor de los alimentos naturales y comerciales en un solo lugar. En nuestra tienda, encontrarás alimentos únicos de alta calidad. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container">
     <div class="row">

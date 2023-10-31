@@ -47,10 +47,10 @@
                 <p class="text-white mb-4">InnoExpose es la respuesta que estabas esperando para dar un salto gigante en el mundo empresarial. 
                     En un entorno donde la expansión y la visibilidad son fundamentales, ofrecemos las herramientas necesarias para potenciar tu presencia de manera extraordinaria. 
                     ¿Tienes un servicio o producto único que ofrecer? En InnoExpose, te damos la oportunidad de mostrarlo al mundo.</p>
-                <a href="" class="btn btn-secondary mt-1 py-3 px-5">Más información</a>
+                <a href="about" class="btn btn-secondary mt-1 py-3 px-5">Más información</a>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-                <img class="img-fluid mt-5" src="img/Index4_photo.jpg" alt="">
+                <img class="img-fluid mt-5" src="img/Imagen Inicio.png" alt="">
             </div>
         </div>
     </div>
@@ -66,16 +66,16 @@
                         <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Jardinería</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <p class="m-0">Puedes conocer nuestra sección de Jardinería, tanto en productos como en oficios.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 pb-1">
                     <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
+                        <i class="flaticon-023-girl h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
-                            <h4>Música</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <h4>Belleza</h4>
+                            <p class="m-0">Tenemos una sección de servicios relacionados con la belleza y cuidados.</p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Arte</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <p class="m-0">Puedes visitar nuestra sección de arte y deleitarte con las creaciones.</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Transporte</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <p class="m-0">También tenemos una sección para ti por si necesitas un servicio de transporte.</p>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Alimentación</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <p class="m-0">Puedes visitar nuestra sección de alimentación, encuentra lo que necesites.</p>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Educación</h4>
-                            <p class="m-0">Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero lorem amet elitr vero...</p>
+                            <p class="m-0">Tenemos opciones para que puedas adquirir un servicio para mejorar tu educación.</p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid rounded mb-5 mb-lg-0" src="img/about-1.jpg" alt="">
+                    <img class="img-fluid rounded mb-5 mb-lg-0" src="img/ImagenIndexPeq.jpg" alt="">
                 </div>
                 <div class="col-lg-7">
                     <p class="section-title pr-5"><span class="pr-2">Conoce más sobre nosotros</span></p>
@@ -135,7 +135,7 @@
                         Nuestra misión es proporcionarte las herramientas y la visibilidad que necesitas para destacarte en el competitivo mundo de los negocios. </p>
                     <div class="row pt-2 pb-4">
                         <div class="col-6 col-md-4">
-                            <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
+                            <img class="img-fluid rounded" src="img/FotoIndexMujer.png" alt="">
                         </div>
                         <div class="col-6 col-md-8">
                             <ul class="list-inline m-0">
@@ -145,8 +145,8 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary mt-2 py-2 px-4">Más información</a>
-                </div>
+                    <a href="about" class="btn btn-primary mt-2 py-2 px-4">Más información</a>
+                </div> 
             </div>
         </div>
     </div>
@@ -162,32 +162,32 @@
             <div class="row pb-3">
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/AlimentosIndex.jpg" width="349.98" height="233.31" alt="">
+                        <img class="card-img-top mb-2" src="img/AlimentosIndex2.jpg" width="349.98" height="233.31" alt="">
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Alimentos</h4>
                             <p>Descubre una amplia gama de alimentos en nuestra categoría de productos disponibles para satisfacer tus necesidades culinarias. 
-                                Desde frescos y saludables hasta gourmet, tenemos lo que buscas</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Leer Más</a>
+                                Desde frescos y saludables hasta gourmet.</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/OficiosIndex.jpg" alt="">
+                        <img class="card-img-top mb-2" src="img/OficiosIndex2.jpg" alt="">
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Oficios</h4>
-                            <p>Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam eirmod, duo et sed sit eirmod kasd clita tempor dolor stet lorem. Tempor ipsum justo amet stet...</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Leer Más</a>
+                            <p>Explora la amplia variedad de habilidades y oficios que poseen los trabajadores independientes y emprendedores. Desde educación, hasta servicios de reparaciones.</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/ArticulosIndex.jpg" alt="">
+                        <img class="card-img-top mb-2" src="img/ProductosIndex3.jpg" alt="">
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Artículos</h4>
-                            <p>Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam eirmod, duo et sed sit eirmod kasd clita tempor dolor stet lorem. Tempor ipsum justo amet stet...</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Leer Más</a>
+                            <p>Explora la amplia gama de variedad de artículos que las personas fabrican y venden. Desde artesanías tradicionales hasta productos comerciales. Todo lo que necesites</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
@@ -436,52 +436,52 @@
                 <div class="testimonial-item px-3">
                     <div class="bg-light shadow-sm rounded mb-4 p-4">
                         <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                        Tuve la oportunidad de conocer esta página, y pude adquirir alimentos para mi dieta vegana.
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="rounded-circle" src="img/testimonial-1.jpg" style="width: 70px; height: 70px;" alt="Image">
                         <div class="pl-3">
-                            <h5>Parent Name</h5>
-                            <i>Profession</i>
+                            <h5>Steven Altamirano</h5>
+                            <i>Comprador Alimentos</i>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item px-3">
                     <div class="bg-light shadow-sm rounded mb-4 p-4">
                         <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                        Me recomendaron entrar a esta página, y así fue como compré productos de belleza a un precio increíble.
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="rounded-circle" src="img/testimonial-2.jpg" style="width: 70px; height: 70px;" alt="Image">
                         <div class="pl-3">
-                            <h5>Parent Name</h5>
-                            <i>Profession</i>
+                            <h5>Maria Murillo</h5>
+                            <i>Compradora Artículos</i>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item px-3">
                     <div class="bg-light shadow-sm rounded mb-4 p-4">
                         <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                        Estaba buscando libros para escribir mi tesis, y aquí encontré un vendedor y pude adquirir muchas copias.
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="rounded-circle" src="img/testimonial-3.jpg" style="width: 70px; height: 70px;" alt="Image">
                         <div class="pl-3">
-                            <h5>Parent Name</h5>
-                            <i>Profession</i>
+                            <h5>William Rockson</h5>
+                            <i>Comprador Artículos</i>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item px-3">
                     <div class="bg-light shadow-sm rounded mb-4 p-4">
                         <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                        Estaba buscando clases privadas en inglés, y encontré aquí profesores nativos brindando servicios.
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="rounded-circle" src="img/testimonial-4.jpg" style="width: 70px; height: 70px;" alt="Image">
                         <div class="pl-3">
-                            <h5>Parent Name</h5>
-                            <i>Profession</i>
+                            <h5>Jimmy Fallon</h5>
+                            <i>Comprador Oficios</i>
                         </div>
                     </div>
                 </div>
