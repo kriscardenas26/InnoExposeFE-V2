@@ -167,7 +167,7 @@
                             <h4 class="">Alimentos</h4>
                             <p>Descubre una amplia gama de alimentos en nuestra categoría de productos disponibles para satisfacer tus necesidades culinarias. 
                                 Desde frescos y saludables hasta gourmet.</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
+                            <a href="alimentos" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Oficios</h4>
                             <p>Explora la amplia variedad de habilidades y oficios que poseen los trabajadores independientes y emprendedores. Desde educación, hasta servicios de reparaciones.</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
+                            <a href="oficios" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Artículos</h4>
                             <p>Explora la amplia gama de variedad de artículos que las personas fabrican y venden. Desde artesanías tradicionales hasta productos comerciales. Todo lo que necesites</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
+                            <a href="articulos" class="btn btn-primary px-4 mx-auto my-2">Ver Más</a>
                         </div>
                     </div>
                 </div>
