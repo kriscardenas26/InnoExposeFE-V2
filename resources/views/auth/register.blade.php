@@ -65,6 +65,29 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Implementación Captcha -->
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="captcha">Captcha</label>
+                        <div class="captcha">
+                            {!! Captcha::img() !!}
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="captcha">Ingresa el texto del captcha</label><span
+                            class="text-danger">*</span>
+                        <input id="captcha" type="text" class="form-control" name="captcha">
+                    </div>
+                    </div>
+                    <div class="col-md-12">
+                    @if ($errors->has('captcha'))
+                        <span class="help-block">
+                            <strong>El texto del captcha ingresado es incorrecto. Por favor, inténtalo de nuevo.</strong>
+                        </span>
+                    @endif
+                    </div>
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">

@@ -53,7 +53,13 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="">Roles</label>
-                                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
+                                    <select name="roles[]" class="form-control">
+                                        <option value="">Seleccione</option> <!-- Opción predeterminada -->
+                                        <!-- Luego puedes agregar las opciones generadas dinámicamente desde PHP -->
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role }}" {{ in_array($role, $userRole) ? 'selected' : '' }}>{{ $role }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             @endcan
