@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <!-- Flaticon Font -->
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
@@ -92,25 +92,63 @@
         </div>
     </div>
 
+   <!-- Fila con formularios y botones en la misma línea, centrados horizontalmente y verticalmente -->
+<div class="d-flex justify-content-center align-items-center">
+    <!-- Formulario de búsqueda por nombre -->
+    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="nombre" placeholder="Buscar por nombre" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <!-- Formulario de filtrado por subcategoría con diseño mejorado -->
+    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+        <div class="form-group">
+            <select name="subcategoria_id" class="form-control">
+                <option value="">Filtrar por subcategoría</option>
+                @foreach ($subcategorias as $subcategoria)
+                    <option value="{{ $subcategoria->id }}">{{ $subcategoria->nombreSC }}</option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+    <!-- Formulario de restablecer filtros -->
+    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+        <input type="hidden" name="restablecer" value="true">
+        <button type="submit" class="btn btn-primary">Restablecer</button>
+    </form>
+</div>
+<div class="my-4"></div>
+
     <!-- Card de la vista inicio del servicio por categoria -->
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
                     <div class="card">
+                        @if ($servicio->imagenes->isNotEmpty())
+                            <div class="">
+                                <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
+                            </div>
+                        @endif
+
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $servicio->nombreS }}</h5>
+                            <p class="card-text">Subcategoría: {{ $servicio->subcategoria->nombreSC }}</p> 
                             <p class="card-text">{{ $servicio->descripcionS }}</p>
                             <form action="{{ route('calificaciones.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="servicio_id" value="{{ $servicio->id }}">
-                                <div class="rating" data-servicio-id="{{ $servicio->id }}">
+                                <div class="rating mb-3" data-servicio-id="{{ $servicio->id }}">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <i class="star fas fa-star" data-rating="{{ $i }}"></i>
                                     @endfor
                                 </div>
-                                <p>
+                                <p class="d-flex justify-content-around">
                                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ $servicio->id }}">Ver Más</a>
                                 <a href="#"  class="btn btn-primary ver-promedio" data-toggle="modal" data-target="#promedioModal" data-servicio-id="{{ $servicio->id }}" data-promedio-route="{{ route('servicios.promedio', ['servicioId' => $servicio->id]) }}">Promedio de Calificación</a>
                                 </p>
@@ -153,32 +191,90 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h3>Días de Apertura</h3>
-                                <p>Día de Apertura: {{ $servicio->diaI }}</p>
-                                <p>Día de Cierre: {{ $servicio->diaF }}</p>
                                 
-                                <h3>Horas de Apertura</h3>
-                                <p>Hora de Apertura: {{ $servicio->horaI }}</p>
-                                <p>Hora de Cierre: {{ $servicio->horaF }}</p>
+                                <div class="row d-flex justify-content-around mt-4 ">
+                                    
+                                    <div class="col-5 d-flex justify-content-end">  
+                                        <div class="iconContainer">
+                                            <img src="img/calendario.png" alt="">
+                                        </div> 
+
+                                    </div>
+                                    <div class="col-7 text-left ">
+                                        <h5>Días de Apertura</h5>
+                                        <p>{{ $servicio->diaI }} a {{ $servicio->diaF }} </p>
+                                        
+
+                                    </div>
+                                </div>
+                                <hr width="50%">
+
+                                <div class="row d-flex justify-content-around mt-4 ">
+                                    <div class="col-5 d-flex justify-content-end">   
+                                        <div class="iconContainer">
+                                            <img src="img/paso-del-tiempo.png" alt="">
+                                        </div> 
+
+                                    </div>
+                                    <div class="col-7 text-left">
+                                        <h5>Horas de Apertura</h5>
+                                <p style="margin: 0;">Hora de Apertura: {{ $servicio->horaI }}</p>
+                                <p style="margin: 0;">Hora de Cierre: {{ $servicio->horaF }}</p>
+
+                                    </div>
+
+                                </div>
+                                <hr width="50%">
+
+                                <div class="row d-flex justify-content-around mt-4 ">
+                                    <div class="col-5 d-flex justify-content-end">
+
+                                        <div class="iconContainer">
+                                            <img src="img/mapas-y-banderas.png" alt="">
+                                        </div> 
+
+                                    </div>
+
+                                    <div class="col-7 remove-margin">
+                                        <div class="text-left">
+                                            <h5>Direcciones Asociadas</h5>
+                                            <ul style="text-align: left;">
+                                                @foreach ($servicio->direcciones as $direccion)
+                                                    <li class="list-unstyled">{{ $direccion->nombreD }}</li>
+                                                    <!-- Otros detalles de la dirección -->
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+
+
+                                    </div>
+                                </div>
+                                                                                     
                                 
-                                <h3>Direcciones Asociadas</h3>
-                                <ul>
-                                    @foreach ($servicio->direcciones as $direccion)
-                                        <li>{{ $direccion->nombreD }}</li>
-                                        <!-- Otros detalles de la dirección -->
-                                    @endforeach
-                                </ul>
                                 
-                                <h3>Redes Sociales Asociadas</h3>
-                                <ul>
-                                    @foreach ($servicio->redesSociales as $redSocial)
-                                        <li>{{ $redSocial->nombreRS }}</li>
-                                        <li>{{ $redSocial->link }}</li>
-                                        <!-- Otros detalles de la red social -->
-                                    @endforeach
-                                </ul>
+                                @if ($servicio->redesSociales->where('estado', 1)->count() > 0)
+                                    <h5 class="mt-4">Redes Sociales Asociadas</h5>
+                                    <ul class="d-flex flex-wrap justify-content-center remove-padding">
+                                        @foreach ($servicio->redesSociales as $redSocial)
+                                            @if ($redSocial->estado === 1)
+                                                <li class="list-unstyled m-2">
+                                                    @if ($redSocial->tipoRS === 'Facebook')
+                                                        <i class="fab fa-facebook" style="color: #3b5998;"></i>
+                                                    @elseif ($redSocial->tipoRS === 'Instagram')
+                                                        <i class="fab fa-instagram" style="color: #C13584;"></i>
+                                                    @elseif ($redSocial->tipoRS === 'TikTok')
+                                                        <i class="fab fa-tiktok" style="color: black;"></i>
+                                                    @endif
+                                                    <a href="{{ $redSocial->link }}" target="_blank">{{ $redSocial->nombreRS }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
                                 
-                                <h3>Fotos Asociadas</h3>
+                                <h5>Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         @foreach ($servicio->imagenes as $key => $imagen)
@@ -197,9 +293,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -297,3 +391,4 @@
         });
     });
 </script>
+ 

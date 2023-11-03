@@ -9869,9 +9869,29 @@ a.text-dark:hover, a.text-dark:focus {
   list-style-type: none;
 }
 
-.LoginBG{
- 
- 
+.iconContainer {
+  background-color: #17a2b8;
+  border-radius: 2rem;
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
   
+}
 
+.iconContainer img{
+  width: fit-content;
+  height: fit-content;
+}
+
+.remove-padding {
+  padding: 0;
+}
+
+.remove-padding {
+  margin: 0;
+}
+
+
+.containerCardssss{
+  margin-top: 7rem;
 }

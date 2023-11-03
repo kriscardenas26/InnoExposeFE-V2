@@ -34,4 +34,16 @@ class Servicio extends Model
     public function subcategoria(){
      return $this->belongsTo(Subcategoria::class,'subcategoria_id');
     } 
+    public function direcciones()
+    {
+        return $this->hasMany(Direccion::class);
+    }
+    public function redesSociales()
+    {
+        return $this->hasMany(RedSocial::class);
+    }
+    public function imagenes()
+    {
+        return $this->hasMany(Imagen::class);
+    }
 }
