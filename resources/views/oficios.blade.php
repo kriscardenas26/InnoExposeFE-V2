@@ -130,10 +130,12 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            @if ($servicio->imagenes->isNotEmpty())
+                        @if ($servicio->imagenes->isNotEmpty())
+                        @if ($servicio->imagenes->where('estado', 1)->count() > 0)
                             <div class="">
                                 <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
                             </div>
+                        @endif
                         @endif
 
                         
@@ -225,8 +227,9 @@
                                     </div>
 
                                 </div>
+                                @if ($servicio->direcciones->isNotEmpty())
                                 <hr width="50%">
-
+                                
                                 <div class="row d-flex justify-content-around mt-4 ">
                                     <div class="col-5 d-flex justify-content-end">
 
@@ -251,6 +254,7 @@
 
 
                                     </div>
+                                    @endif
                                 </div>
                                                                                      
                                 
@@ -275,7 +279,8 @@
                                     </ul>
                                 @endif
                                 
-                                <h5>Fotos Asociadas</h5>
+                                @if ($servicio->imagenes->where('estado', 1)->count() > 0)
+                                <h5 class="mt-4">Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         @foreach ($servicio->imagenes as $key => $imagen)
@@ -293,6 +298,7 @@
                                         <span class="sr-only">Siguiente</span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             
                         </div>

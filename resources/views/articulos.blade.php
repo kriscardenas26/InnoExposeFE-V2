@@ -129,11 +129,13 @@
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
-                    @if ($servicio->imagenes->isNotEmpty())
-                        <div class="">
-                            <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
-                        </div>
-                    @endif
+                @if ($servicio->imagenes->isNotEmpty())
+                        @if ($servicio->imagenes->where('estado', 1)->count() > 0)
+                            <div class="">
+                                <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
+                            </div>
+                        @endif
+                        @endif
 
                         
                         
@@ -227,8 +229,9 @@
                                     </div>
 
                                 </div>
+                                @if ($servicio->direcciones->isNotEmpty())
                                 <hr width="50%">
-
+                                
                                 <div class="row d-flex justify-content-around mt-4 ">
                                     <div class="col-5 d-flex justify-content-end">
 
@@ -253,6 +256,7 @@
 
 
                                     </div>
+                                    @endif
                                 </div>
                                                                                      
                                 
@@ -278,7 +282,7 @@
                                 @endif
                             
 
-                                
+                                @if ($servicio->imagenes->where('estado', 1)->count() > 0)
                                 <h5 class="mt-4">Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
@@ -297,6 +301,7 @@
                                         <span class="sr-only">Siguiente</span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             
                         </div>
