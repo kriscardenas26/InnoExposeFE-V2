@@ -14,13 +14,13 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="blog" class="dropdown-item">Artículos</a>
-                            <a href="single" class="dropdown-item">Oficios</a>
-                            <a href="food" class="dropdown-item">Alimentos</a>
+                            <a href="articulos" class="dropdown-item">Artículos</a>
+                            <a href="oficios" class="dropdown-item">Oficios</a>
+                            <a href="alimentos" class="dropdown-item">Alimentos</a>
                         </div>
                     </div>
-                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
                     <a href="class" class="nav-item nav-link">Tutoriales</a>
+                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
                     <!-- @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth

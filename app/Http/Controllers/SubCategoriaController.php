@@ -132,4 +132,5 @@ class SubCategoriaController extends Controller
        return redirect()->route('subcategorias.index')
            ->with('success', 'SubCategoria eliminada correctamente');
    }
+
 }

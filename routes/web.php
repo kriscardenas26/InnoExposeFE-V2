@@ -13,6 +13,10 @@ use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\SubCategoriaController;
 use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\ArticulosClienteController;
+use App\Http\Controllers\AlimentosClienteController;
+use App\Http\Controllers\OficiosClienteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +30,19 @@ use App\Http\Controllers\DireccionController;
 Route::get('about', function () {
     return view('about');
 })->name('about');
+
+
+Route::get('/articulos',[ArticulosClienteController::class, 'index'])->name('ArticulosCliente');
+Route::post('/calificaciones', [CalificacionController::class, 'store'])->name('calificaciones.store');
+Route::get('/calificaciones', 'CalificacionController@index')->name('calificaciones');
+Route::get('/servicios/{servicioId}/promedio', [CalificacionController::class, 'calcularPromedioCalificaciones'])->name('servicios.promedio');
+
+Route::get('/alimentos',[AlimentosClienteController::class, 'index'])->name('AlimentosCliente');
+Route::get('/oficios',[OficiosClienteController::class, 'index'])->name('OficiosCliente');
+
+
+
+
 
 Route::get('blog', function () {
     return view('blog');
@@ -81,11 +98,11 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::resource('redsocials', App\Http\Controllers\RedSocialController::class);
     Route::resource('imagens', App\Http\Controllers\ImagenController::class);
     Route::resource('direccions', App\Http\Controllers\DireccionController::class);
-    Route::get('/servicios/{servicioId}/calificar', [CalificacionController::class, 'calificar'])->name('servicios.prueba');
+    // Route::get('/servicios/{servicioId}/calificar', [CalificacionController::class, 'calificar'])->name('servicios.prueba');
 
-    Route::post('/calificaciones', [CalificacionController::class, 'store'])->name('calificaciones.store');
+    // Route::post('/calificaciones', [CalificacionController::class, 'store'])->name('calificaciones.store');
 
-    Route::get('/servicios/{servicioId}/promedio', [App\Http\Controllers\CalificacionController::class, 'promedio'])->name('servicios.promedio');
+    // Route::get('/servicios/{servicioId}/promedio', [App\Http\Controllers\CalificacionController::class, 'promedio'])->name('servicios.promedio');
     Route::get('servicios/estado/{id}', [App\Http\Controllers\ServicioController::class, 'estado'])->name('servicios.estado');
     Route::get('imagens/estado/{id}', [App\Http\Controllers\ImagenController::class, 'estado'])->name('imagens.estado');
     Route::get('redsocials/estado/{id}', [App\Http\Controllers\RedSocialController::class, 'estado'])->name('redsocials.estado');

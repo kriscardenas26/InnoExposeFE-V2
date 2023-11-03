@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ValidacionRedSocial;
 use Illuminate\Support\Facades\DB;
 use App\Models\RedSocial;
 use App\Models\Servicio;
@@ -86,6 +88,12 @@ class RedSocialController extends Controller
         ]);
         // $jsonData = request()->json()->all();
         $galeria = $request->all();
+        $email = "innoexpose@gmail.com";
+        $nombreRS = $request->input('nombreRS'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
+        $messages = "Es necesario hacer una revisión para la validación del estado del perfil $nombreRS.";
+        $url = env('APP_URL');
+        $newLink = "http://127.0.0.1:8000/redsocials/";
+        Mail::to($email)->send(new ValidacionRedSocial($email, $messages, $newLink, $nombreRS));
         RedSocial::create($galeria);
         return redirect()->route('redsocials.index')
             ->with('success', 'Perfil de red social creado exitosamente.');

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Mail\VerificacionUsuarios;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'captcha' => 'required|captcha',
         ]);
     }
 
@@ -64,10 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $url = env('APP_URL');
+        $NewEmail=$data['email'];
+        $newLink = "http://127.0.0.1:8000/usuarios/";
+        $email= "innoexpose@gmail.com";
+        $messages ="El nuevo usuario que necesita una asignación de rol es: $NewEmail.";
+        Mail::to($email)->send(new VerificacionUsuarios($email,$messages,$newLink));
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+       
         ]);
     }
 }

@@ -1,0 +1,19 @@
+body.custom-background {
+    background: linear-gradient(351deg, rgba(0, 57, 79, 1) 0%, rgba(40, 164, 167, 1) 46%, rgba(0, 57, 79, 1) 100%);
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.logoContainer img {
+    margin-top: 1rem;
+}
+
+.BotonIngresar {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card-body form {
+    margin-top: 3rem;
+}
