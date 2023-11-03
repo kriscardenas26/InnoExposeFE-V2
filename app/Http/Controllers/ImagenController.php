@@ -163,11 +163,14 @@ class ImagenController extends Controller
         $galeria = Imagen::findOrFail($id);
         $galeria->fileName  = $request->get('fileName');
         $galeria->servicio_id  = $request->get('servicio_id');
-        if($request->hasFile('urlImage')){
-            $file = $request->imagen;
-            $file->move(public_path(). '/imagenes', $file->getClientOriginalName());
-            $galeria->imagen = $file->getClientOriginalName();
+        if ($request->hasFile('urlImage')) {
+            $file = $request->file('urlImage');
+            $rutaGuardarImg = 'imagenes/';
+            $imagenGaleria = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($rutaGuardarImg, $imagenGaleria);
+            $galeria->urlImage = $imagenGaleria;
         }
+        
 
     $galeria->update(); 
         return redirect()->route('imagens.index')

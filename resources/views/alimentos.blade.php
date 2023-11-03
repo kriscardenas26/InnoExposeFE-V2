@@ -125,7 +125,7 @@
 
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
-    <div class="row">
+    <div class="row d-flex">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
@@ -219,7 +219,7 @@
 
                                     </div>
                                     <div class="col-7 text-left">
-                                        <h5>Horas de Apertura</h5>
+                                        <h5>Horario</h5>
                                 <p style="margin: 0;">Hora de Apertura: {{ $servicio->horaI }}</p>
                                 <p style="margin: 0;">Hora de Cierre: {{ $servicio->horaF }}</p>
 
