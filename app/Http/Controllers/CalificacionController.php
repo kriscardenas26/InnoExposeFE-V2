@@ -13,27 +13,42 @@ class CalificacionController extends Controller
             'nota' => 'required|integer|min:1|max:5',
             'servicio_id' => 'required|exists:servicios,id',
         ]);
+
         $calificacion = new Calificacion([
             'nota' => $request->nota,
             'servicio_id' => $request->servicio_id,
         ]);
+
         $calificacion->save();
+
+        // Redirige a donde desees después de guardar la calificación
         return redirect()->back();
     }
 
-    public function promedio($servicioId)
+   
+
+
+    public function calcularPromedioCalificaciones($servicioId)
     {
-        $promedio = Calificacion::where('servicio_id', $servicioId)->avg('nota');
+        // Obtén el servicio por su ID
         $servicio = Servicio::find($servicioId);
-
-        return view('servicio.detalle', compact('servicio', 'promedio'));
+    
+        if (!$servicio) {
+            return response()->json(['promedio' => 0]); // Manejar el caso en el que el servicio no se encuentra
+        }
+    
+        // Calcula el promedio de calificaciones para el servicio
+        $promedio = Calificacion::where('servicio_id', $servicioId)->avg('nota');
+    
+        if ($promedio === null) {
+            return response()->json(['promedio' => 0]); // Manejar el caso en el que no hay calificaciones
+        }
+    
+        // Puedes redondear el promedio a un número específico de decimales si lo deseas
+        $promedioRedondeado = round($promedio, 2);
+    
+        return response()->json(['promedio' => $promedioRedondeado]);
     }
-
-    public function calificar($servicioId)
-    {
-        $servicio = Servicio::findOrFail($servicioId);
-        return view('calificacion.prueba', compact('servicio'));
-    }
-
+    
 }
 
