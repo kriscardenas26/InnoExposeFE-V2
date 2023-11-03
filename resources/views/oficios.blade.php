@@ -94,7 +94,7 @@
       <!-- Fila con formularios y botones en la misma línea, centrados horizontalmente y verticalmente -->
 <div class="d-flex justify-content-center align-items-center">
     <!-- Formulario de búsqueda por nombre -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline">
+    <form method="GET" action="{{ route('OficiosCliente') }}" class="form-inline">
         <div class="form-group">
             <input type="text" name="nombre" placeholder="Buscar por nombre" class="form-control">
         </div>
@@ -102,7 +102,7 @@
     </form>
 
     <!-- Formulario de filtrado por subcategoría con diseño mejorado -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+    <form method="GET" action="{{ route('OficiosCliente') }}" class="form-inline ml-2">
         <div class="form-group">
             <select name="subcategoria_id" class="form-control">
                 <option value="">Filtrar por subcategoría</option>
@@ -115,7 +115,7 @@
     </form>
 
     <!-- Formulario de restablecer filtros -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+    <form method="GET" action="{{ route('OficiosCliente') }}" class="form-inline ml-2">
         <input type="hidden" name="restablecer" value="true">
         <button type="submit" class="btn btn-primary">Restablecer</button>
     </form>
@@ -130,10 +130,12 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            @if ($servicio->imagenes->isNotEmpty())
+                        @if ($servicio->imagenes->isNotEmpty())
+                        @if ($servicio->imagenes->where('estado', 1)->count() > 0)
                             <div class="">
                                 <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
                             </div>
+                        @endif
                         @endif
 
                         
@@ -155,6 +157,7 @@
                                 <a href="#"  class="btn btn-primary ver-promedio" data-toggle="modal" data-target="#promedioModal" data-servicio-id="{{ $servicio->id }}" data-promedio-route="{{ route('servicios.promedio', ['servicioId' => $servicio->id]) }}">Promedio de Calificación</a>
                                 </p>
                             </form>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -218,15 +221,16 @@
 
                                     </div>
                                     <div class="col-7 text-left">
-                                        <h5>Horas de Apertura</h5>
+                                        <h5>Horario</h5>
                                 <p style="margin: 0;">Hora de Apertura: {{ $servicio->horaI }}</p>
                                 <p style="margin: 0;">Hora de Cierre: {{ $servicio->horaF }}</p>
 
                                     </div>
 
                                 </div>
+                                @if ($servicio->direcciones->isNotEmpty())
                                 <hr width="50%">
-
+                                
                                 <div class="row d-flex justify-content-around mt-4 ">
                                     <div class="col-5 d-flex justify-content-end">
 
@@ -251,6 +255,7 @@
 
 
                                     </div>
+                                    @endif
                                 </div>
                                                                                      
                                 
@@ -275,7 +280,8 @@
                                     </ul>
                                 @endif
                                 
-                                <h5>Fotos Asociadas</h5>
+                                @if ($servicio->imagenes->where('estado', 1)->count() > 0)
+                                <h5 class="mt-4">Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         @foreach ($servicio->imagenes as $key => $imagen)
@@ -293,6 +299,7 @@
                                         <span class="sr-only">Siguiente</span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             
                         </div>
