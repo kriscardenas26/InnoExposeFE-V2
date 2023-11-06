@@ -15,6 +15,7 @@ class Servicio extends Model
         'diaF' => 'required',
         'horaI' => 'required',
         'horaF' => 'required',
+        'urlImage' => 'required|image|mimes:jpeg,png,svg|max: 8388608',
         'estado' => 'required',
         'persona_id' => 'required',
         'categoria_id' => 'required',
@@ -22,7 +23,7 @@ class Servicio extends Model
 
     ];
     protected $fillable =
-     ['nombreS','cedulaS','descripcionS','diaI','diaF','horaI','horaF','estado','persona_id'
+     ['nombreS','cedulaS','descripcionS','diaI','diaF','horaI','horaF','urlImage','estado','persona_id'
      ,'categoria_id','subcategoria_id','idUsuario'];
 
     use HasFactory;

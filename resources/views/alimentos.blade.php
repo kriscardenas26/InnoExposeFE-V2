@@ -125,17 +125,15 @@
 
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
-    <div class="row">
+    <div class="row d-flex">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        @if ($servicio->imagenes->isNotEmpty())
+                        
                             <div class="">
-                                <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
+                                <img src="{{ asset('/imagenes/' . $servicio->urlImage) }}" class="d-block w-100" width="100" height="200" alt="">
                             </div>
-                        @endif
-
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $servicio->nombreS }}</h5>
                             <p class="card-text">Subcategoría: {{ $servicio->subcategoria->nombreSC }}</p> 
@@ -217,15 +215,16 @@
 
                                     </div>
                                     <div class="col-7 text-left">
-                                        <h5>Horas de Apertura</h5>
+                                        <h5>Horario</h5>
                                 <p style="margin: 0;">Hora de Apertura: {{ $servicio->horaI }}</p>
                                 <p style="margin: 0;">Hora de Cierre: {{ $servicio->horaF }}</p>
 
                                     </div>
 
                                 </div>
+                                @if ($servicio->direcciones->isNotEmpty())
                                 <hr width="50%">
-
+                                
                                 <div class="row d-flex justify-content-around mt-4 ">
                                     <div class="col-5 d-flex justify-content-end">
 
@@ -250,6 +249,7 @@
 
 
                                     </div>
+                                    @endif
                                 </div>
                                                                                      
                                 
@@ -274,7 +274,8 @@
                                     </ul>
                                 @endif
                                 
-                                <h5>Fotos Asociadas</h5>
+                                @if ($servicio->imagenes->where('estado', 1)->count() > 0)
+                                <h5 class="mt-4">Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         @foreach ($servicio->imagenes as $key => $imagen)
@@ -292,6 +293,7 @@
                                         <span class="sr-only">Siguiente</span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             
                         </div>

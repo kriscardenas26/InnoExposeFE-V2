@@ -73,7 +73,7 @@ class ImagenController extends Controller
     {
         $request['estado'] = false;
         $request->validate([
-            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][a-zA-Z0-9]*$/'],
+            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][A-Za-z0-9\s,áéíóúÁÉÍÓÚüÜ]*$/'],
             'servicio_id' => 'required|exists:servicios,id',
             'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
@@ -146,7 +146,7 @@ class ImagenController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][a-zA-Z0-9]*$/'],
+            'fileName' => ['required', 'max:30', 'regex:/^[A-Z][A-Za-z0-9\s,áéíóúÁÉÍÓÚüÜ]*$/'],
             'servicio_id' => 'required|exists:servicios,id',
             'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
@@ -163,11 +163,14 @@ class ImagenController extends Controller
         $galeria = Imagen::findOrFail($id);
         $galeria->fileName  = $request->get('fileName');
         $galeria->servicio_id  = $request->get('servicio_id');
-        if($request->hasFile('urlImage')){
-            $file = $request->imagen;
-            $file->move(public_path(). '/imagenes', $file->getClientOriginalName());
-            $galeria->imagen = $file->getClientOriginalName();
+        if ($request->hasFile('urlImage')) {
+            $file = $request->file('urlImage');
+            $rutaGuardarImg = 'imagenes/';
+            $imagenGaleria = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($rutaGuardarImg, $imagenGaleria);
+            $galeria->urlImage = $imagenGaleria;
         }
+        
 
     $galeria->update(); 
         return redirect()->route('imagens.index')

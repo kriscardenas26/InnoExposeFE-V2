@@ -95,7 +95,7 @@
      <!-- Fila con formularios y botones en la misma línea, centrados horizontalmente y verticalmente -->
 <div class="d-flex justify-content-center align-items-center">
     <!-- Formulario de búsqueda por nombre -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline">
+    <form method="GET" action="{{ route('ArticulosCliente') }}" class="form-inline">
         <div class="form-group">
             <input type="text" name="nombre" placeholder="Buscar por nombre" class="form-control">
         </div>
@@ -103,7 +103,7 @@
     </form>
 
     <!-- Formulario de filtrado por subcategoría con diseño mejorado -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+    <form method="GET" action="{{ route('ArticulosCliente') }}" class="form-inline ml-2">
         <div class="form-group">
             <select name="subcategoria_id" class="form-control">
                 <option value="">Filtrar por subcategoría</option>
@@ -116,7 +116,7 @@
     </form>
 
     <!-- Formulario de restablecer filtros -->
-    <form method="GET" action="{{ route('AlimentosCliente') }}" class="form-inline ml-2">
+    <form method="GET" action="{{ route('ArticulosCliente') }}" class="form-inline ml-2">
         <input type="hidden" name="restablecer" value="true">
         <button type="submit" class="btn btn-primary">Restablecer</button>
     </form>
@@ -129,32 +129,26 @@
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
-                    @if ($servicio->imagenes->isNotEmpty())
-                        <div class="">
-                            <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
-                        </div>
-                    @endif
-
-                        
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $servicio->nombreS }}</h5>
-                            <p class="card-text">Subcategoría: {{ $servicio->subcategoria->nombreSC }}</p> 
-                            <p class="card-text ">{{ $servicio->descripcionS }}</p>
-                            <form action="{{ route('calificaciones.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="servicio_id" value="{{ $servicio->id }}">
-                                <div class="rating mb-3" data-servicio-id="{{ $servicio->id }}">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <i class="star fas fa-star" data-rating="{{ $i }}"></i>
-                                    @endfor
-                                </div>
-                                <p class="d-flex justify-content-around">
-                                <a href="#" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $servicio->id }}">Ver Más</a>
-                                <a href="#"  class="btn btn-primary ver-promedio " data-toggle="modal" data-target="#promedioModal" data-servicio-id="{{ $servicio->id }}" data-promedio-route="{{ route('servicios.promedio', ['servicioId' => $servicio->id]) }}">Promedio de Calificación</a>
-                                </p>
-                            </form>
-                        </div>
+                    <div class="">
+                        <img src="{{ asset('/imagenes/' . $servicio->urlImage) }}" class="d-block w-100" width="100" height="200" alt="">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ $servicio->nombreS }}</h5>
+                        <p class="card-text">Subcategoría: {{ $servicio->subcategoria->nombreSC }}</p> 
+                        <p class="card-text ">{{ $servicio->descripcionS }}</p>
+                        <form action="{{ route('calificaciones.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="servicio_id" value="{{ $servicio->id }}">
+                            <div class="rating mb-3" data-servicio-id="{{ $servicio->id }}">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <i class="star fas fa-star" data-rating="{{ $i }}"></i>
+                                @endfor
+                            </div>
+                            <p class="d-flex justify-content-around">
+                            <a href="#" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $servicio->id }}">Ver Más</a>
+                            <a href="#"  class="btn btn-primary ver-promedio " data-toggle="modal" data-target="#promedioModal" data-servicio-id="{{ $servicio->id }}" data-promedio-route="{{ route('servicios.promedio', ['servicioId' => $servicio->id]) }}">Promedio de Calificación</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             @endif
@@ -220,15 +214,16 @@
 
                                     </div>
                                     <div class="col-7 text-left">
-                                        <h5>Horas de Apertura</h5>
+                                        <h5>Horario</h5>
                                 <p style="margin: 0;">Hora de Apertura: {{ $servicio->horaI }}</p>
                                 <p style="margin: 0;">Hora de Cierre: {{ $servicio->horaF }}</p>
 
                                     </div>
 
                                 </div>
+                                @if ($servicio->direcciones->isNotEmpty())
                                 <hr width="50%">
-
+                                
                                 <div class="row d-flex justify-content-around mt-4 ">
                                     <div class="col-5 d-flex justify-content-end">
 
@@ -253,6 +248,7 @@
 
 
                                     </div>
+                                    @endif
                                 </div>
                                                                                      
                                 
@@ -278,7 +274,7 @@
                                 @endif
                             
 
-                                
+                                @if ($servicio->imagenes->where('estado', 1)->count() > 0)
                                 <h5 class="mt-4">Fotos Asociadas</h5>
                                 <div id="carousel{{ $servicio->id }}" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
@@ -297,6 +293,7 @@
                                         <span class="sr-only">Siguiente</span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             
                         </div>
@@ -375,6 +372,29 @@
         color: gold; /* Cambia el color de las estrellas a dorado cuando el cursor está encima */
     }
 </style>
+<script>
+    $(document).ready(function() {
+        $('.ver-promedio').on('click', function() {
+            const servicioId = $(this).data('servicio-id');
+            const promedioRoute = $(this).data('promedio-route');
+
+            // Realiza una solicitud AJAX para obtener el promedio
+            $.ajax({
+                url: promedioRoute,
+                method: 'GET',
+                success: function(data) {
+                    // Rellena el elemento promedioServicio con el valor del promedio
+                    $('#promedioServicio').text('Promedio de Calificación: ' + data.promedio);
+                    // Muestra el modal
+                    $('#promedioModal').modal('show');
+                },
+                error: function() {
+                    // Maneja errores si es necesario
+                }
+            });
+        });
+    });
+</script>
 
 
 
