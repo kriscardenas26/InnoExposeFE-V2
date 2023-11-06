@@ -3,9 +3,24 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    {{ Form::label('Nombre') }}
-                    {{ Form::text('nombreS', $galeria->nombreS, ['class' => 'form-control' . ($errors->has('nombreS') ? ' is-invalid' : ''), 'placeholder' => '']) }}
-                    {!! $errors->first('nombreS', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('Nombreㅤㅤㅤㅤㅤㅤㅤㅤ‎ ‎ ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤSubir imagen') }}
+                    <div class="row">
+                        <div class="col-md-6">
+                        {{ Form::text('nombreS', $galeria->nombreS, ['class' => 'form-control' . ($errors->has('nombreS') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+                        {!! $errors->first('nombreS', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
+                        <div class="col-md-6">
+                        
+                            <div class="row">
+                                    <input id="urlImage" type="file" class="form-control @error('urlImage') is-invalid @enderror" name="urlImage" value="{{ $galeria->urlImage }}" autocomplete="urlImage">
+                                    @error('urlImage')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('CédulaㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤEncargado') }}
@@ -55,14 +70,14 @@
                         {{ Form::select('categoria_id', $categorias, $galeria->categoria_id, ['class' => 'form-control', 'id' => 'categoriaSelect', 'placeholder' => 'Seleccione']) }}
                         </div>
                         <div class="col-md-6">
-                        <select name="subcategoria_id" id="subcategoriaSelect" class="form-control">
-                            <option value="" disabled selected>Seleccione</option>
-                            @foreach ($subcategorias as $subcategoria)
-                                <option value="{{ $subcategoria->id }}" data-categoria="{{ $subcategoria->categoria_id }}">
-                                    {{ $subcategoria->nombreSC }}
-                                </option>
-                            @endforeach
-                        </select>
+                            <select name="subcategoria_id" id="subcategoriaSelect" class="form-control">
+                                <option value="" disabled selected>Seleccione</option>
+                                @foreach ($subcategorias as $subcategoria)
+                                    <option value="{{ $subcategoria->id }}" data-categoria="{{ $subcategoria->categoria_id }}">
+                                        {{ $subcategoria->nombreSC }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
