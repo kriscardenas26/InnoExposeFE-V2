@@ -30,6 +30,10 @@
                             {{ $galeria->nombreS }}
                         </div>
                         <div class="form-group">
+                            <strong>Logo:</strong>
+                            <img class="rounded-circle" src="{{asset('/imagenes/'.$galeria->urlImage)}}" alt="{{$galeria->imagenes}}" width="100" height="100">     
+                        </div>
+                        <div class="form-group">
                             <strong>Cédula J:</strong>
                             {{ $galeria->cedulaS }}
                         </div>

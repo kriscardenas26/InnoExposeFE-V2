@@ -76,7 +76,7 @@ class ServicioController extends Controller
     {
         $request['estado'] = false;
         $request->validate([
-            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s]*$/'],
+            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s,]*$/'],
             'descripcionS' => 'required|max:100',
             'cedulaS' => ['nullable', 'regex:/^[0-9\s]*$/'],
             'horaI' => 'required|date_format:H:i',
@@ -85,6 +85,7 @@ class ServicioController extends Controller
             'persona_id' => 'required|exists:personas,id',
             'diaI' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
             'diaF' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+            'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nombreS.required' => 'El campo nombre es obligatorio.',
             'nombreS.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
@@ -104,9 +105,19 @@ class ServicioController extends Controller
             'diaI.in' => 'El día de apertura debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
             'diaF.required' => 'El día de cierre es obligatorio.',
             'diaF.in' => 'El día de cierre debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+            'urlImage.required' => 'Debes subir una imagen.',
+            'urlImage.image' => 'El archivo debe ser una imagen válida.',
+            'urlImage.mimes' => 'La imagen debe ser de tipo JPEG, PNG, JPG o GIF.',
+            'urlImage.max' => 'La imagen no puede superar los 2MB de tamaño.',
         ]);
         
         $galeria = $request->all();
+        if($imagen = $request->file('urlImage')) {
+            $rutaGuardarImg = 'imagenes/';
+            $imagenGaleria = date('YmdHis'). "." .$imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenGaleria);
+            $galeria['urlImage'] = "$imagenGaleria";
+        }
         $email = "innoexpose@gmail.com";
         $nombreServicio = $request->input('nombreS'); // Asumiendo que el nombre del servicio se encuentra en el campo 'nombreS' del formulario
         $messages = "Es necesario hacer una revisión para la validación del estado del servicio $nombreServicio.";
@@ -160,7 +171,7 @@ class ServicioController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s]*$/'],
+            'nombreS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s,áéíóúÁÉÍÓÚüÜ]*$/'],
             'descripcionS' => 'required|max:100',
             'cedulaS' => ['nullable', 'regex:/^[0-9\s]*$/'],
             'horaI' => 'required|date_format:H:i',
@@ -169,6 +180,7 @@ class ServicioController extends Controller
             'persona_id' => 'required|exists:personas,id',
             'diaI' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
             'diaF' => 'required|in:Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo',
+            'urlImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nombreS.required' => 'El campo nombre es obligatorio.',
             'nombreS.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
@@ -188,6 +200,10 @@ class ServicioController extends Controller
             'diaI.in' => 'El día de apertura debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
             'diaF.required' => 'El día de cierre es obligatorio.',
             'diaF.in' => 'El día de cierre debe ser Lunes, Martes, Miércoles, Jueves, Viernes, Sábado o Domingo.',
+            'urlImage.required' => 'Debes subir una imagen.',
+            'urlImage.image' => 'El archivo debe ser una imagen válida.',
+            'urlImage.mimes' => 'La imagen debe ser de tipo JPEG, PNG, JPG o GIF.',
+            'urlImage.max' => 'La imagen no puede superar los 2MB de tamaño.',
         ]);
         $galeria = Servicio::findOrFail($id);
         $galeria->nombreS  = $request->get('nombreS');
@@ -197,6 +213,13 @@ class ServicioController extends Controller
         $galeria->diaF  = $request->get('diaF');
         $galeria->horaI  = $request->get('horaI');
         $galeria->horaF  = $request->get('horaF');
+        if ($request->hasFile('urlImage')) {
+            $file = $request->file('urlImage');
+            $rutaGuardarImg = 'imagenes/';
+            $imagenGaleria = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($rutaGuardarImg, $imagenGaleria);
+            $galeria->urlImage = $imagenGaleria;
+        }
         $galeria->persona_id  = $request->get('persona_id');
         $galeria->subcategoria_id  = $request->get('subcategoria_id');
         $galeria->categoria_id  = $request->get('categoria_id');
@@ -214,6 +237,9 @@ class ServicioController extends Controller
     public function destroy($id)
     {
         $galeria = Servicio::FindOrFail($id);
+        if (file_exists('imagenes/' . $galeria['urlImage']) and !empty($galeria['urlImage'])) {
+            unlink('imagenes/' . $galeria['urlImage']);
+        }
         $galeria->delete();
         return redirect()->route('servicios.index')
             ->with('success', 'Servicio eliminado correctamente');

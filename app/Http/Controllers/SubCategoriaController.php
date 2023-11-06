@@ -50,7 +50,7 @@ class SubCategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'nombreSC' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/', 'unique:subcategorias,nombreSC'],
+        'nombreSC' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/', 'unique:subcategorias,nombreSC'],
         'categoria_id' => ['required', 'exists:categorias,id'],
     ], [
         'nombreSC.required' => 'El campo nombre es obligatorio.',
@@ -86,16 +86,6 @@ class SubCategoriaController extends Controller
      */
     public function edit($id)
     {
-        $request->validate([
-            'nombreSC' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/', 'unique:subcategorias,nombreSC'],
-            'categoria_id' => ['required', 'exists:categorias,id'],
-        ], [
-            'nombreSC.required' => 'El campo nombre es obligatorio.',
-            'nombreSC.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
-            'nombreSC.unique' => 'Ya existe un registro en el sistema con este nombre',
-            'categoria_id.required' => 'Debes seleccionar una categoría.',
-            'categoria_id.exists' => 'La categoría seleccionada no es válida.',
-        ]);
         $galeria = SubCategoria::find($id);
         $temas = Categoria::pluck('nombreC','id');
         return view('subcategoria.edit', compact('galeria', 'temas'));
@@ -110,6 +100,15 @@ class SubCategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombreSC' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
+            'categoria_id' => ['required', 'exists:categorias,id'],
+        ], [
+            'nombreSC.required' => 'El campo nombre es obligatorio.',
+            'nombreSC.regex' => 'El campo nombre debe comenzar con una letra mayúscula y no puede contener números ni caracteres especiales.',
+            'categoria_id.required' => 'Debes seleccionar una categoría.',
+            'categoria_id.exists' => 'La categoría seleccionada no es válida.',
+        ]);
         $galeria = SubCategoria::findOrFail($id);
         $galeria->nombreSC  = $request->get('nombreSC');
         $galeria->categoria_id  = $request->get('categoria_id');
