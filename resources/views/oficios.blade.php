@@ -151,11 +151,14 @@
                                 </p>
                             </form>
                         </div>
-                        </div>
+                        
                     </div>
                 </div>
             @endif
         @endforeach
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $servicios->links() }}
     </div>
 </div>
 <!-- Modal del promedio de la calificacion por servicio -->

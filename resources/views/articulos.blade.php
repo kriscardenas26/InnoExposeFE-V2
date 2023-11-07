@@ -154,7 +154,12 @@
             @endif
         @endforeach
     </div>
+     <div class="d-flex justify-content-center">
+        {{ $servicios->links() }}
+    </div>
 </div>
+
+
 
 <!-- Modal del promedio de la calificacion por servicio -->
 <div class="modal fade" id="promedioModal" tabindex="-1" role="dialog" aria-labelledby="promedioModalLabel" aria-hidden="true">
