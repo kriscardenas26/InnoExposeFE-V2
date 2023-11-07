@@ -33,13 +33,12 @@ class AlimentosClienteController extends Controller
             $query->where('subcategoria_id', $request->input('subcategoria_id'));
         }
 
+      
         // Verifica si se debe restablecer los filtros
         if ($request->has('restablecer') && $request->input('restablecer') === 'true') {
-            // No aplicar ningún filtro
-            $servicios = Servicio::with('direcciones', 'redesSociales', 'imagenes')->whereIn('subcategoria_id', $subcategorias->pluck('id'))->get();
+            $servicios = Servicio::with('direcciones', 'redesSociales', 'imagenes')->whereIn('subcategoria_id', $subcategorias->pluck('id'))->paginate(6); // Ajusta el número de elementos por página según tus necesidades
         } else {
-            // Obtén los servicios que coinciden con los filtros
-            $servicios = $query->get();
+            $servicios = $query->paginate(6); // Ajusta el número de elementos por página según tus necesidades
         }
     } else {
         // La categoría "Alimentos" no existe en la base de datos

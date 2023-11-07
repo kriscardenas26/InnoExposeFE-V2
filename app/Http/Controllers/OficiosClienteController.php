@@ -41,6 +41,11 @@ class OficiosClienteController extends Controller
             // Obtén los servicios que coinciden con los filtros
             $servicios = $query->get();
         }
+        if ($request->has('restablecer') && $request->input('restablecer') === 'true') {
+            $servicios = $query->paginate(6); // Ajusta el número de elementos por página según tus necesidades
+        } else {
+            $servicios = $query->paginate(6); // Ajusta el número de elementos por página según tus necesidades
+        }
 
         // Obtén las direcciones, redes sociales e imágenes para cada servicio
         foreach ($servicios as $servicio) {
