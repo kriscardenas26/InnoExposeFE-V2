@@ -125,6 +125,7 @@
 
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
+    
     <div class="row d-flex">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
