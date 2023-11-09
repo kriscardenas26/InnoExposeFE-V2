@@ -125,6 +125,7 @@
 
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
+    
     <div class="row d-flex">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
@@ -156,6 +157,9 @@
                 </div>
             @endif
         @endforeach
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $servicios->links() }}
     </div>
 </div>
 <!-- Modal del promedio de la calificacion por servicio -->
