@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>KidKinder - Kindergarten Website Template</title>
+<meta charset="utf-8">
+    <title>InnoExpose</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/Logo Icono.svg" rel="icon1">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
