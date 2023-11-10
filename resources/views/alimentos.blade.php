@@ -122,79 +122,6 @@
     </form>
 </div>
 <div class="my-4"></div>
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Rectángulo base -->
-  <rect x="0" y="0" width="174" height="100" fill="#e6e6e6" />
-  <!-- Hoyo en la parte izquierda con forma de flecha (un poco menos ancho) -->
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <!-- Punta de flecha a la derecha -->
-  <polygon points="174,0 214,50 174,100" fill="#e6e6e6" />
-  <!-- Círculo para el número -->
-  <circle cx="50" cy="50" r="10" fill="#1e3064" />
-  <!-- Texto en el centro con salto de línea y negrita -->
-  <text x="107" y="50" font-family="Arial" font-size="16" font-weight="bold" fill="#1e3064" text-anchor="middle" dominant-baseline="middle">
-    <tspan x="107" dy="-8">Ingreso de</tspan>
-    <tspan x="107" dy="16">Solicitudes</tspan>
-  </text>
-  <!-- Número dentro del círculo -->
-  <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#e6e6e6" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-  <!-- Franja delgada en la parte inferior -->
-  <line x1="0" y1="100" x2="174" y2="100" stroke="#1e3064" stroke-width="6" />
-</svg>
-
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="174" height="100" fill="#e6e6e6" />
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <polygon points="174,0 214,50 174,100" fill="#e6e6e6" />
-  <circle cx="50" cy="50" r="10" fill="#1e3064" />
-    <text x="107" y="50" font-family="Arial" font-size="16" font-weight="bold" fill="#1e3064" text-anchor="middle" alignment-baseline="middle">Pendientes</text>
-    <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#e6e6e6" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-    <line x1="0" y1="100" x2="174" y2="100" stroke="#1e3064" stroke-width="6" />
-</svg>
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="174" height="100" fill="#e6e6e6" />
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <polygon points="174,0 214,50 174,100" fill="#e6e6e6" />
-  <circle cx="50" cy="50" r="10" fill="#1e3064" />
-    <text x="115" y="50" font-family="Arial" font-size="16" font-weight="bold"fill="#1e3064" text-anchor="middle" alignment-baseline="middle">Dpto. Crédito</text>
-    <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#e6e6e6" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-    <line x1="0" y1="100" x2="174" y2="100" stroke="#1e3064" stroke-width="6" />
-</svg>
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="174" height="100" fill="#e6e6e6" />
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <polygon points="174,0 214,50 174,100" fill="#e6e6e6" />
-  <circle cx="50" cy="50" r="10" fill="#1e3064" />
-  <text x="107" y="50" font-family="Arial" font-size="16" font-weight="bold"fill="#1e3064" text-anchor="middle" alignment-baseline="middle">Aprobados</text>
-  <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#e6e6e6" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-  <line x1="0" y1="100" x2="174" y2="100" stroke="#1e3064" stroke-width="6" />
-</svg>
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="174" height="100" fill="#55FF50" />
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <polygon points="174,0 214,50 174,100" fill="#55FF50" />
-  <circle cx="50" cy="50" r="10" fill="#05A100" />
-  <text x="125" y="50" font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle" alignment-baseline="middle">Desembolsados</text>
-  <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-  <line x1="0" y1="100" x2="174" y2="100" stroke="#05A100" stroke-width="6" />
-</svg>
-
-<svg width="214" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="174" height="100" fill="#FF5050" />
-  <polygon points="0,2 0,98 35,50" fill="#FFFFFF" />
-  <polygon points="174,0 214,50 174,100" fill="#FF5050" />
-  <circle cx="50" cy="50" r="10" fill="#D40000" />
-  <text x="111" y="50" font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle" alignment-baseline="middle">Rechazados</text>
-  <text x="50" y="50" font-family="Arial" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle">2</text>
-  <line x1="0" y1="100" x2="174" y2="100" stroke="#D40000" stroke-width="6" />
-</svg>
-
-
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
     
@@ -467,6 +394,5 @@
                 }
             });
         });
-    });
+});
 </script>
- 
