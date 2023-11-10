@@ -32,7 +32,7 @@
                                         
                                         @can('borrar-rol')
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' => 'display:inline']) !!}
-                                        {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar']) !!}
+                                            {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar', 'onclick' => 'return confirm("¿Estás seguro de que deseas eliminar este rol?")']) !!}
                                         {!! Form::close() !!}
                                         @endcan
                                     </td>
@@ -52,3 +52,11 @@
             </div>
         </section>
 @endsection
+
+<script>
+    function confirmarEliminacion(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este rol?")) {
+            document.getElementById('formulario-eliminar-' + id).submit();
+        }
+    }
+</script>
