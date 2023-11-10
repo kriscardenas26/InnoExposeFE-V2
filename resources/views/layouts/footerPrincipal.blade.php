@@ -8,7 +8,7 @@
                 <p>InnoExpose es el trampolín que necesitas para destacarte y prosperar en este nuevo paradigma empresarial. 
                     ¡Es tu momento de brillar y alcanzar el éxito! 
                     Únete a nosotros y descubre una forma más directa, rápida y segura de promocionarte. 
-                    El futuro de los emprendedores comienza aquí."</p>
+                    El futuro de los emprendedores comienza aquí.</p>
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                         style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
@@ -26,7 +26,7 @@
                     <a class="text-white mb-2"><i class="fa fa-street-view mr-2"></i>Dirección</a>
                     <p>Nicoya, Guanacaste, CR</p>
                     <a class="text-white mb-2"><i class="fa fa-envelope mr-2"></i>Correo Electrónico</a>
-                    <p>InnoExpose@gmail.com</p>
+                    <p>Innoexpose@gmail.com</p>
                     <a class="text-white mb-2"><i class="fa fa-phone mr-2"></i>Teléfono</a>
                     <p>+506 8800 8800</p>
                 </div>
@@ -38,9 +38,9 @@
                 <a class="text-white mb-2" href="{{ route('sobrenosotros') }}"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="{{ route('guiasytutoriales') }}"><i class="fa fa-angle-right mr-2"></i>Tutoriales</a>
                     <a class="text-white mb-2" href="{{ route('contactanos') }}"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
-                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Artículos</a>
-                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Oficios</a>
-                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Alimentos</a>
+                    <a class="text-white mb-2" href="articulos"><i class="fa fa-angle-right mr-2"></i>Artículos</a>
+                    <a class="text-white mb-2" href="oficios"><i class="fa fa-angle-right mr-2"></i>Oficios</a>
+                    <a class="text-white mb-2" href="alimentos"><i class="fa fa-angle-right mr-2"></i>Alimentos</a>
                     @if(Gate::forUser(Auth::user())->denies('ver-vista'))
                     <a class="text-white mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Iniciar Sesión</a>
                     <a class="text-white mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>Registrarse</a>
