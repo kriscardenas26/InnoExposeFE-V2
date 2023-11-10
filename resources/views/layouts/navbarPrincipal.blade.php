@@ -12,30 +12,16 @@
                 <div class="navbar-nav font-weight-bold mx-auto py-0">
                     <a href="index" class="nav-item nav-link active">Inicio</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="articulos" class="dropdown-item">Artículos</a>
                             <a href="oficios" class="dropdown-item">Oficios</a>
                             <a href="alimentos" class="dropdown-item">Alimentos</a>
                         </div>
                     </div>
-                    <a href="class" class="nav-item nav-link">Tutoriales</a>
-                    <a href="about" class="nav-item nav-link">Sobre Nosotros</a>
-                    <!-- @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif -->
-                    <!-- <a href="team" class="nav-item nav-link">Teachers</a> -->
-                    <!-- <a href="gallery" class="nav-item nav-link">Gallery</a> -->
+                    <a href="guiasytutoriales" class="nav-item nav-link">Tutoriales</a>
+                    <a href="sobrenosotros" class="nav-item nav-link">Sobre Nosotros</a>
+                    <a href="contactanos" class="nav-item nav-link">Contáctanos</a>
                 </div>
             </div>
         </nav>

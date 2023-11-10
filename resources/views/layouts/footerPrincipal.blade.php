@@ -35,9 +35,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primaryF mb-4">Accesos rápidos</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                     <a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Tutoriales</a>
+                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Artículos</a>
+                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Oficios</a>
+                    <a class="text-white mb-2" href="class"><i class="fa fa-angle-right mr-2"></i>Alimentos</a>
                     @if(Gate::forUser(Auth::user())->denies('ver-vista'))
                     <a class="text-white mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Iniciar Sesión</a>
                     <a class="text-white mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>Registrarse</a>
@@ -61,4 +63,6 @@
             </p>
         </div>
     </div>
+
+    
     <!-- Footer End -->

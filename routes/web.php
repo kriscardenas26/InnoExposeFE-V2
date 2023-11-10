@@ -16,6 +16,10 @@ use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\ArticulosClienteController;
 use App\Http\Controllers\AlimentosClienteController;
 use App\Http\Controllers\OficiosClienteController;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +31,9 @@ use App\Http\Controllers\OficiosClienteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('about', function () {
-    return view('about');
-})->name('about');
+Route::get('sobrenosotros', function () {
+    return view('sobrenosotros');
+})->name('sobrenosotros');
 
 
 Route::get('/articulos',[ArticulosClienteController::class, 'index'])->name('ArticulosCliente');
@@ -40,17 +44,22 @@ Route::get('/servicios/{servicioId}/promedio', [CalificacionController::class, '
 Route::get('/alimentos',[AlimentosClienteController::class, 'index'])->name('AlimentosCliente');
 Route::get('/oficios',[OficiosClienteController::class, 'index'])->name('OficiosCliente');
 
+Route::post('/contactos', [ContactController::class, 'store'])
+        ->middleware(['auth', 'verified'])
+        ->name('contact.store');
 
 
-
+Route::get('contactanos', function () {
+    return view('contactanos');
+})->name('contactanos');
 
 Route::get('blog', function () {
     return view('blog');
 })->name('blog');
 
-Route::get('class', function () {
-    return view('class');
-})->name('class');
+Route::get('guiasytutoriales', function () {
+    return view('guiasytutoriales');
+})->name('guiasytutoriales');
 
 Route::get('contact', function () {
     return view('contact');
