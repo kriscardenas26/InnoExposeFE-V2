@@ -26,6 +26,7 @@ class CreateServiciosTable extends Migration
             $table->string('diaF');
             $table->time('horaI');
             $table->time('horaF');
+            $table->string('urlImage');
             $table->boolean('estado');
             $table->integer('idUsuario');
             $table->foreign('persona_id')->references('id')

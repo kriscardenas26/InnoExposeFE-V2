@@ -125,19 +125,16 @@
 
     <!-- Card de la vista inicio del servicio por categoria -->
 <div class="container mt-5">
+    
     <div class="row d-flex">
         @foreach ($servicios as $servicio)
             @if ($servicio->estado)
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         
-                        @if ($servicio->imagenes->isNotEmpty())
-                        @if ($servicio->imagenes->where('estado', 1)->count() > 0)
                             <div class="">
-                                <img src="{{ asset('/imagenes/' . $servicio->imagenes[0]->urlImage) }}" class="d-block w-100" width="100" height="200" alt="{{ $servicio->imagenes[0]->imagenes }}">
+                                <img src="{{ asset('/imagenes/' . $servicio->urlImage) }}" class="d-block w-100" width="100" height="200" alt="">
                             </div>
-                        @endif
-                        @endif
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $servicio->nombreS }}</h5>
                             <p class="card-text">Subcategoría: {{ $servicio->subcategoria->nombreSC }}</p> 
@@ -160,6 +157,9 @@
                 </div>
             @endif
         @endforeach
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $servicios->links() }}
     </div>
 </div>
 <!-- Modal del promedio de la calificacion por servicio -->

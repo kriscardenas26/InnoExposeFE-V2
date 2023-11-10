@@ -55,9 +55,9 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombreP' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
-            'apellido1' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
-            'apellido2' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'nombreP' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
+            'apellido1' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
+            'apellido2' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
             'tipoIdentificacion' => 'required|in:Nacional,Pasaporte,Nacionalizado',
             'cedulaP' => 'required|numeric',
         ], [
@@ -121,9 +121,9 @@ class PersonaController extends Controller
     public function update(Request $request, Persona $persona)
     {
         $request->validate([
-            'nombreP' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
-            'apellido1' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
-            'apellido2' => ['required', 'regex:/^[A-Z][a-zA-Z\s]*$/'],
+            'nombreP' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
+            'apellido1' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
+            'apellido2' => ['required', 'regex:/^[A-ZÁÉÍÓÚÜ][a-zA-ZÁÉÍÓÚÜáéíóúü\s]*$/'],
             'tipoIdentificacion' => 'required|in:Nacional,Pasaporte,Nacionalizado',
             'cedulaP' => 'required|numeric',
         ], [

@@ -1,4 +1,3 @@
-<!-- Primera parte copiada -->
 @extends('layouts.app')
 @section('content')
 <section class="section">
@@ -45,15 +44,17 @@
                                     <td>{{ $galeria->nombreD }}</td>
                                     <td>{{ $galeria->Persona->nombreP}}</td>
                                     <td>
-                                        <form action="{{ route('direccions.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('direccions.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                        <form action="{{ route('direccions.destroy', $galeria->id) }}" class="formulario-eliminar" method="POST" id="formulario-eliminar-{{ $galeria->id }}">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('direccions.show', $galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
                                             @can('editar-direccion')
-                                            <a class="btn btn-sm btn-success" href="{{ route('direccions.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('direccions.edit', $galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-direccion')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            <a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
+                                                <i class="fa fa-fw fa-trash"></i> 
+                                            </a>
                                             @endcan
                                         </form>
                                     </td>
@@ -61,7 +62,7 @@
                                 @endforeach
                                 @endcan
                                 @can('ver-contenido')
-                                @if($esTrabajador)
+                                @if ($esTrabajador)
                                 @foreach ($galeriaU as $galeria)
                                 <tr>
                                     <td>{{ ++$i }}</td>
@@ -69,15 +70,20 @@
                                     <td>{{ $galeria->nombreD }}</td>
                                     <td>{{ $galeria->Persona->nombreP}}</td>
                                     <td>
-                                        <form action="{{ route('direccions.destroy',$galeria->id) }}" class="formulario-eliminar" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('direccions.show',$galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                        <form action="{{ route('direccions.destroy', $galeria->id) }}" class="formulario-eliminar" method="POST" id="formulario-eliminar-{{ $galeria->id }}">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('direccions.show', $galeria->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
                                             @can('editar-direccion')
-                                            <a class="btn btn-sm btn-success" href="{{ route('direccions.edit',$galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('direccions.edit', $galeria->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-direccion')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            <!-- CORREGIR BOTÓN DE ELIMINAR -->
+                                            <a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
+                                                <i class="fa fa-fw fa-trash"></i> 
+                                            </a>
+                                            <!-- SUSTITUIR CON LO DE ARRIBA -->
+                                            <!-- <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button> -->
                                             @endcan
                                         </form>
                                     </td>
@@ -93,29 +99,35 @@
             {!! $galerias->links() !!}
         </div>
     </div>
-    </div>
-    @endsection
+</div>
+</section>
+@endsection
 
-    @section('js')
+<!-- PARTE A AGREGAR -->
+<script>
+    function confirmarEliminacion(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar esta dirección?")) {
+            document.getElementById('formulario-eliminar-' + id).submit();
+        }
+    }
+</script>
+
+<!-- PARTE A COMENTAR -->
+    <!-- @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('eliminar') == 'ok')
     <script>
+    @if (session('eliminar') == 'ok')
         Swal.fire(
             'Eliminado!',
-            'La dirección se eliminó correctamente.',
+            'El servicio se eliminó correctamente.',
             'success'
         )
-    </script>
     @endif
-
-
-    <script>
         $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Usted se encuentra a punto de borrar una dirección',
-                text: "¿Está seguro de eliminar esta dirección?",
+                title: 'Usted se encuentra a punto de borrar un servicio',
+                text: "¿Está seguro de eliminar este servicio?",
                 icon: 'warning',
                 showCancelButton: true,
                 cancelButtonText: 'Cancelar',
@@ -129,4 +141,4 @@
             })
         });
     </script>
-    @endsection
+    @endsection -->

@@ -72,7 +72,7 @@ class RedSocialController extends Controller
     {
         $request['estado'] = false;
         $request->validate([
-            'nombreRS' => ['required', 'regex:/^[A-Z0-9][A-Za-z0-9\s]*$/'],
+            'nombreRS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s,áéíóúÁÉÍÓÚüÜ]*$/'],
             'link' => 'required|url',
             'tipoRS' => 'required|in:Facebook,Instagram,TikTok',
             'servicio_id' => 'required|exists:servicios,id',
@@ -139,7 +139,7 @@ class RedSocialController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombreRS' => ['required', 'regex:/^[A-Z0-9][A-Za-z0-9\s]*$/'],
+            'nombreRS' => ['required', 'regex:/^[A-Z][A-Za-z0-9\s,áéíóúÁÉÍÓÚüÜ]*$/'],
             'link' => 'required|url',
             'tipoRS' => 'required|in:Facebook,Instagram,TikTok',
             'servicio_id' => 'required|exists:servicios,id',

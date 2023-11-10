@@ -33,6 +33,7 @@
 
                                 <th style="color:#fff;">No</th>
                                 <th style="color:#fff;">Nombre</th>
+                                <th style="color:#fff;">Logo</th>
                                 <th style="color:#fff;">Encargado</th>
                                 <th style="color:#fff;">Categoría</th>
                                 <th style="color:#fff;">Subcategoría</th>
@@ -50,6 +51,10 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $galeria->nombreS }}</td>
+                                    {{-- <td>{{ $galeria->imagen }}</td> --}}
+                                    <td>
+                                        <img class="rounded-circle" src="{{asset('/imagenes/'.$galeria->urlImage)}}" alt="{{$galeria->imagenes}}" width="100" height="100">
+                                    </td>
                                     <td>{{ $galeria->Persona->nombreP }}</td>
                                     <td>{{ $galeria->Subcategoria->Categoria->nombreC}}</td>
                                     <td>{{ $galeria->Subcategoria->nombreSC}}</td>
@@ -90,6 +95,10 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $galeria->nombreS }}</td>
+                                    {{-- <td>{{ $galeria->imagen }}</td> --}}
+                                    <td>
+                                        <img class="rounded-circle" src="{{asset('/imagenes/'.$galeria->urlImage)}}" alt="{{$galeria->imagenes}}" width="100" height="100">
+                                    </td>
                                     <td>{{ $galeria->Persona->nombreP }}</td>
                                     <td>{{ $galeria->Subcategoria->Categoria->nombreC}}</td>
                                     <td>{{ $galeria->Subcategoria->nombreSC}}</td>
@@ -136,21 +145,18 @@
     </div>
     @endsection
 
-    @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @if (session('eliminar') == 'ok')
+    
+    <!-- @section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+    @if (session('eliminar') == 'ok')
         Swal.fire(
             'Eliminado!',
             'El servicio se eliminó correctamente.',
             'success'
         )
-    </script>
     @endif
-
-
-    <script>
         $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();
             Swal.fire({
@@ -169,4 +175,4 @@
             })
         });
     </script>
-    @endsection
+    @endsection -->
