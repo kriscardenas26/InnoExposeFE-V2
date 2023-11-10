@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Listado de SubCategorias</h3>
+        <h3 class="page__heading">SubCategorias</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -70,38 +70,12 @@
     </div>
     </div>
     @endsection
-
-    @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('eliminar') == 'ok')
     <script>
-        Swal.fire(
-            'Eliminado!',
-            'La subcategoría se eliminó correctamente.',
-            'success'
-        )
-    </script>
-    @endif
+    function confirmarEliminacion(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este servicio?")) {
+            document.getElementById('formulario-eliminar-' + id).submit();
+        }
+    }
+</script>
 
-
-    <script>
-        $('.formulario-eliminar').submit(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Usted se encuentra a punto de borrar una subcategoría',
-                text: "¿Está seguro de eliminar esta subcategoría?",
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, eliminar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
-                }
-            })
-        });
-    </script>
-    @endsection
+    

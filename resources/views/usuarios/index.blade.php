@@ -50,8 +50,8 @@
 
                     @can('borrar-usuario')
                     {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline']) !!}
-                    {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar']) !!}
-                    {!! Form::close() !!}
+    {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar', 'onclick' => 'return confirm("¿Estás seguro de que deseas eliminar este usuario?")']) !!}
+{!! Form::close() !!}
                     @endcan
                   </td>
                 </tr>
@@ -79,9 +79,9 @@
                     @endcan
 
                     @can('borrar-usuario')
-                    {!! Form::open( ['method' => 'DELETE','route' => ['usuarios.destroy', $uss->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm formulario-eliminar' ]) !!}
-                    {!! Form::close() !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline']) !!}
+    {!! Form::button('<i class="fa fa-fw fa-trash"></i> ', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm formulario-eliminar', 'onclick' => 'return confirm("¿Estás seguro de que deseas eliminar este usuario?")']) !!}
+{!! Form::close() !!}
                     @endcan
                   </td>
                 </tr>
@@ -104,37 +104,10 @@
 </section>
 @endsection
 
-@section('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-@if (session('eliminar') == 'ok')
 <script>
-  Swal.fire(
-    'Eliminado!',
-    'El usuario se elimino correctamente.',
-    'success'
-  )
+    function confirmarEliminacion(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+            document.getElementById('formulario-eliminar-' + id).submit();
+        }
+    }
 </script>
-@endif
-
-
-<script>
-  $('.formulario-eliminar').submit(function(e) {
-    e.preventDefault();
-    Swal.fire({
-      title: 'Usted se encuentra a punto de borrar un usuario',
-      text: "¿Está seguro de eliminar este usuario?",
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.submit();
-      }
-    })
-  });
-</script>
-@endsection
