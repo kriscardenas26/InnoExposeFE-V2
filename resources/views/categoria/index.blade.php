@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Listado de Categorías</h3>
+        <h3 class="page__heading">Categorías</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -54,7 +54,9 @@
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-categoria')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                            <a class="btn btn-sm btn-danger btn-link" href="javascript:void(0)" onclick="confirmarEliminacion({{ $categoria->id }})">
+                                                <i class="fa fa-fw fa-trash"></i> 
+                                            </a>                                            
                                             @endcan
                                         </form>
                                     </td>
@@ -70,38 +72,11 @@
     </div>
     </div>
     @endsection
-
-    @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('eliminar') == 'ok')
     <script>
-        Swal.fire(
-            'Eliminado!',
-            'La categoría se eliminó correctamente.',
-            'success'
-        )
-    </script>
-    @endif
-
-
-    <script>
-        $('.formulario-eliminar').submit(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Usted se encuentra a punto de borrar una categoría',
-                text: "¿Está seguro de eliminar esta categoría?",
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, eliminar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
-                }
-            })
-        });
-    </script>
-    @endsection
+    function confirmarEliminacion(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar esta categoria?")) {
+            document.getElementById('formulario-eliminar-' + id).submit();
+        }
+    }
+</script>
+    

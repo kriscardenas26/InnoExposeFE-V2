@@ -2,7 +2,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Listado de Direcciones</h3>
+        <h3 class="page__heading">Direcciones</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -52,7 +52,7 @@
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-direccion')
-                                            <a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
+                                            <a class="btn btn-sm btn-danger btn-link" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
                                                 <i class="fa fa-fw fa-trash"></i> 
                                             </a>
                                             @endcan
@@ -78,12 +78,9 @@
                                             @csrf
                                             @method('DELETE')
                                             @can('borrar-direccion')
-                                            <!-- CORREGIR BOTÓN DE ELIMINAR -->
-                                            <a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
+                                            <a class="btn btn-sm btn-danger btn-link" href="javascript:void(0)" onclick="confirmarEliminacion({{ $galeria->id }})">
                                                 <i class="fa fa-fw fa-trash"></i> 
                                             </a>
-                                            <!-- SUSTITUIR CON LO DE ARRIBA -->
-                                            <!-- <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button> -->
                                             @endcan
                                         </form>
                                     </td>
@@ -112,33 +109,3 @@
     }
 </script>
 
-<!-- PARTE A COMENTAR -->
-    <!-- @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    @if (session('eliminar') == 'ok')
-        Swal.fire(
-            'Eliminado!',
-            'El servicio se eliminó correctamente.',
-            'success'
-        )
-    @endif
-        $('.formulario-eliminar').submit(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Usted se encuentra a punto de borrar un servicio',
-                text: "¿Está seguro de eliminar este servicio?",
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, eliminar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
-                }
-            })
-        });
-    </script>
-    @endsection -->
