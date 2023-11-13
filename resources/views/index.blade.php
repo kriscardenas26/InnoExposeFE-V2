@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-
 <head>
     <meta charset="utf-8">
     <title>InnoExpose</title>
@@ -47,7 +46,7 @@
                 <p class="text-white mb-4">InnoExpose es la respuesta que estabas esperando para dar un salto gigante en el mundo empresarial. 
                     En un entorno donde la expansión y la visibilidad son fundamentales, ofrecemos las herramientas necesarias para potenciar tu presencia de manera extraordinaria. 
                     ¿Tienes un servicio o producto único que ofrecer? En InnoExpose, te damos la oportunidad de mostrarlo al mundo.</p>
-                <a href="about" class="btn btn-secondary mt-1 py-3 px-5">Más información</a>
+                <a href="sobrenosotros" class="btn btn-secondary mt-1 py-3 px-5">Más información</a>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <img class="img-fluid mt-5" src="img/Imagen Inicio.png" alt="">
@@ -145,7 +144,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="about" class="btn btn-primary mt-2 py-2 px-4">Más información</a>
+                    <a href="sobrenosotros" class="btn btn-primary mt-2 py-2 px-4">Más información</a>
                 </div> 
             </div>
         </div>
