@@ -43,7 +43,7 @@
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
             <h3 class="display-3 font-weight-bold text-white">Contáctanos</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0"><a class="text-white" href="Index">Inicio</a></p>
+                <p class="m-0"><a class="text-white" href="index">Inicio</a></p>
                 <p class="m-0 px-2">/</p>
                 <p class="m-0">Contáctanos</p>
             </div>
@@ -62,9 +62,9 @@
                         ¿Tienes preguntas, sugerencias o necesitas asistencia? Estamos aquí para ayudarte. En nuestra sección de Contacto, ponemos a tu disposición diversas formas de comunicarte con nosotros.
                         Tu opinión es importante para nosotros, y queremos asegurarnos de que tengas una experiencia óptima en InnoExpose.
                     <p>
-                        Puedes utilizar el formulario de contacto para enviarnos un mensaje directo, y nuestro equipo de soporte te responderá en breve.
-                        También puedes encontrar información de contacto detallada para comunicarte con nosotros por teléfono o correo electrónico si lo prefieres.
-                    </p>
+                        Puedes utilizar el formulario de contacto para enviarnos un mensaje directo, y nuestro equipo de soporte te responderá en breve. 
+                        <a style="font-weight: bold; color: #17a2b8;">Solo recuerda que necesitas estar registrado en nuestro sistema y verificar tu correo electrónico para poder usar el formulario de contacto.</a> </p>
+                    <p>También puedes encontrar información de contacto detallada para comunicarte con nosotros por teléfono o correo electrónico si lo prefieres.</p>
                     <p>
                         En InnoExpose, valoramos tu retroalimentación y estamos comprometidos a brindarte el mejor servicio posible. No dudes en ponerte en contacto con nosotros en cualquier momento. ¡Esperamos escucharte pronto y poder ayudarte en lo que necesites!
                     </p>
@@ -108,6 +108,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
+                                            @if(!auth()->check())
+                                                <div class="alert alert-warning mt-2 col-12">
+                                                    Debes estar registrado con una cuenta para usar este formulario de contacto.
+                                                 </div>
+                                            @endif
                                                 @if (auth()->check() && !auth()->user()->hasVerifiedEmail())
                                                 <div class="alert alert-warning mt-2 col-12">
                                                     Debes verificar tu correo electrónico antes de ponerte en contacto.
